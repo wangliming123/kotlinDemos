@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">MapBoxDemo</string>
+    <string name="str_change_layer_style">changeLayerStyle</string>
+    <string name="str_access_token">
+        pk.eyJ1IjoiMTU4NzE5OTI5MDQiLCJhIjoiY2p6ajR3OHo5MDQ5ejNtcndwdGJ3dTloYSJ9.zcivrGtvFWhFy1hZSJi7VQ
+    </string>
+    <string name="str_percent_100">100%</string>
+    <string name="tap_on_map_instruction">Toqueu en qualsevol lloc al mapa</string>
+    <string name="str_text_red">Red</string>
+    <string name="str_text_green">Green</string>
+    <string name="str_text_blue">Blue</string>
+    <string name="language_switch_options_menu_language_english">English</string>
+    <string name="language_switch_options_menu_language_french">French</string>
+    <string name="language_switch_options_menu_language_russian">Russion</string>
+    <string name="language_switch_options_menu_language_german">German</string>
+    <string name="language_switch_options_menu_language_spanish">Spanish</string>
+    <string name="language_switch_options_menu_language_chinese">Chinese</string>
+
+    <string-array name="layer_spinner_array">
+        <item>Water</item>
+        <item>Building</item>
+    </string-array>
+</resources>
