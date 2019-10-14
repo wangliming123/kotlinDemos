@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.core.app.ActivityCompat
+import com.twtims.mapboxdemo.dataVisualization.*
 import com.twtims.mapboxdemo.displaymap.*
 import com.twtims.mapboxdemo.label.*
 import com.twtims.mapboxdemo.layer.*
@@ -27,7 +28,11 @@ class NavActivity : AppCompatActivity() {
             Nav("Dynamically MapView", DynamicMapActivity::class.java),
             Nav("Fragment Map", FragmentMapActivity::class.java),
             Nav("Color dependent on zoom level", ZoomDependentFillColorActivity::class.java),
-            Nav("Indoor Map", IndoorMapActivity::class.java)
+            Nav("Indoor Map", IndoorMapActivity::class.java),
+            Nav("Opacity fade", SatelliteOpacityOnZoomActivity::class.java),
+            Nav("Multiple text formats", TextFieldMultipleFormatsActivity::class.java),
+            Nav("Transparent render surface", TransparentBackgroundActivity::class.java),
+            Nav("Use an image source", ImageSourceActivity::class.java)
         )
 
         private val layerArray = arrayOf(
@@ -37,7 +42,9 @@ class NavActivity : AppCompatActivity() {
             Nav("Add a WMS source(WMS地址无法访问)", AddWmsSourceActivity::class.java),
             Nav("Add an image source with time lapse", ImageSourceTimeLapseActivity::class.java),
             Nav("Adjust a layer's opacity", AdjustLayerOpacityActivity::class.java),
-            Nav("Change a layer's color", ColorSwitcherActivity::class.java)
+            Nav("Change a layer's color", ColorSwitcherActivity::class.java),
+            Nav("Show and hide layers", ShowHideLayersActivity::class.java),
+            Nav("Variable label placement", VariableLabelPlacementActivity::class.java)
         )
 
         private val labelArray = arrayOf(
@@ -45,13 +52,29 @@ class NavActivity : AppCompatActivity() {
             Nav("Icon update based on API response", SpaceStationLocationActivity::class.java),
             Nav("Change a map's language", LanguageSwitchActivity::class.java),
             Nav("Click to add photo", ClickAddPhotoActivity::class.java),
-            Nav("Marker following route", MarkerFollowingRouteActivity::class.java)
+            Nav("Marker following route", MarkerFollowingRouteActivity::class.java),
+            Nav("Symbol layer icons", BasicSymbolLayerActivity::class.java),
+            Nav("Style with missing icon", MissingIconActivity::class.java),
+            Nav("Pulsing layer opacity", PulsingLayerOpacityColorActivity::class.java),
+            Nav("Text anchor position", RotatingTextAnchorPositionActivity::class.java),
+            Nav("Adjust text labels", TextFieldFormattingActivity::class.java),
+            Nav("SymbolLayer icons", SymbolLayerMapillaryActivity::class.java),
+            Nav("Animated icon movement", ValueAnimatorIconAnimationActivity::class.java)
+        )
+        private val dataVisualizationArray = arrayOf(
+            Nav("Styling heat maps", MultipleHeatmapStylingActivity::class.java),
+            Nav("Display water depth", BathymetryActivity::class.java),
+            Nav("Calendar integration", CalendarIntegrationActivity::class.java),
+            Nav("Create a line layer", LineLayerActivity::class.java),
+            Nav("Create hotspots from points", CreateHotspotsActivity::class.java),
+            Nav("Data time lapse", AddRainFallStyleActivity::class.java)
         )
 
         val navTabArray = arrayOf(
             NavTab("map", mapArray),
             NavTab("layer", layerArray),
-            NavTab("label", labelArray)
+            NavTab("label", labelArray),
+            NavTab("Data Visualization", dataVisualizationArray)
         )
     }
 

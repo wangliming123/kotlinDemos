@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".label.ValueAnimatorIconAnimationActivity">
+    <com.mapbox.mapboxsdk.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:mapbox_cameraTargetLat="0.282219"
+            app:mapbox_cameraTargetLng="117.226205"
+            app:mapbox_cameraTilt="55"
+            app:mapbox_cameraZoom="4"
+            app:mapbox_uiRotateGestures="false" />
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/interpolator_selection_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            app:fab_addButtonColorNormal="@color/mapboxRed"
+            app:fab_addButtonColorPressed="@color/mapboxWhite"
+            app:fab_addButtonPlusIconColor="@color/mapboxWhite"
+            app:fab_labelStyle="@style/menu_labels_style"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_bounce_interpolator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="@color/mapboxBlue"
+                app:fab_colorPressed="@color/mapboxWhite"
+                app:fab_size="mini"
+                app:fab_title="@string/bounce_interpolator" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_linear_interpolator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="@color/mapboxGreen"
+                app:fab_colorPressed="@color/mapboxWhite"
+                app:fab_size="mini"
+                app:fab_title="@string/linear_interpolator" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_accelerate_interpolator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="@color/mapboxRed"
+                app:fab_colorPressed="@color/mapboxWhite"
+                app:fab_size="mini"
+                app:fab_title="@string/accelerate_interpolator" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_decelerate_interpolator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="@color/mapboxYellow"
+                app:fab_colorPressed="@color/mapboxWhite"
+                app:fab_size="mini"
+                app:fab_title="@string/decelerate_interpolator" />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+</androidx.constraintlayout.widget.ConstraintLayout>

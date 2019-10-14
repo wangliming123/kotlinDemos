@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
 
     <application
             android:name=".MapApp"
@@ -13,7 +14,25 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".label.BasicSymbolLayerActivity"></activity>
+        <activity android:name=".dataVisualization.AddRainFallStyleActivity"></activity>
+        <activity android:name=".dataVisualization.CreateHotspotsActivity" />
+        <activity android:name=".dataVisualization.LineLayerActivity" />
+        <activity android:name=".dataVisualization.CalendarIntegrationActivity" />
+        <activity android:name=".dataVisualization.BathymetryActivity" />
+        <activity android:name=".dataVisualization.MultipleHeatmapStylingActivity" />
+        <activity android:name=".layer.VariableLabelPlacementActivity" />
+        <activity android:name=".label.ValueAnimatorIconAnimationActivity" />
+        <activity android:name=".displaymap.ImageSourceActivity" />
+        <activity android:name=".displaymap.TransparentBackgroundActivity" />
+        <activity android:name=".displaymap.TextFieldMultipleFormatsActivity" />
+        <activity android:name=".label.SymbolLayerMapillaryActivity" />
+        <activity android:name=".label.TextFieldFormattingActivity" />
+        <activity android:name=".layer.ShowHideLayersActivity" />
+        <activity android:name=".displaymap.SatelliteOpacityOnZoomActivity" />
+        <activity android:name=".label.RotatingTextAnchorPositionActivity" />
+        <activity android:name=".label.PulsingLayerOpacityColorActivity" />
+        <activity android:name=".label.MissingIconActivity" />
+        <activity android:name=".label.BasicSymbolLayerActivity" />
         <activity android:name=".label.MarkerFollowingRouteActivity" />
         <activity android:name=".displaymap.IndoorMapActivity" />
         <activity android:name=".label.ClickAddPhotoActivity" />

@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name">MapBoxDemo</string>
     <string name="str_change_layer_style">changeLayerStyle</string>
-    <string name="str_access_token">
-        pk.eyJ1IjoiMTU4NzE5OTI5MDQiLCJhIjoiY2p6ajR3OHo5MDQ5ejNtcndwdGJ3dTloYSJ9.zcivrGtvFWhFy1hZSJi7VQ
-    </string>
+    <string name="str_access_token">pk.eyJ1IjoiMTU4NzE5OTI5MDQiLCJhIjoiY2sxazNzZ3VnMTNoNzNranl5aHRvZWhtcSJ9.ED0Uir7kkph9B_F5DVBBKA</string>
     <string name="str_percent_100">100%</string>
     <string name="tap_on_map_instruction">Toqueu en qualsevol lloc al mapa</string>
     <string name="str_text_red">Red</string>
@@ -15,6 +13,25 @@
     <string name="language_switch_options_menu_language_german">German</string>
     <string name="language_switch_options_menu_language_spanish">Spanish</string>
     <string name="language_switch_options_menu_language_chinese">Chinese</string>
+
+    <string name="fab_title_hotels">Hotels</string>
+    <string name="fab_title_parks">Parks</string>
+    <string name="fab_title_attractions">Attractions</string>
+    <string name="position_textview">\"State-label\" layer\'s anchor position: %1$s \n%2$s</string>
+    <string name="fab_toggle_font">Font</string>
+    <string name="fab_toggle_text_size">Size</string>
+    <string name="fab_toggle_text_color">Color</string>
+    <string name="instruction_toast">Select a GeoJSON file on your device</string>
+    <string name="map_style_not_loaded_yet">The map\'s style hasn\'t loaded yet</string>
+
+    <string name="bounce_interpolator">Bounce interpolator</string>
+    <string name="linear_interpolator">Linear interpolator</string>
+    <string name="accelerate_interpolator">Accelerate interpolator</string>
+    <string name="decelerate_interpolator">Decelerate interpolator</string>
+    <string name="zoom_map_in_and_out_variable_label_instruction">Zoom in and out to see red labels try to avoid collisions</string>
+    <string name="no_connectivity">Calendar events won\\\'t appear because your device isn\\\'t connected to the internet.</string>
+    <string name="click_on_calendar_icon_instruction">Tap on a calendar event map icon</string>
+    <string name="user_calendar_permission_explanation">This example needs calendar access in order to show calendar and map integration.</string>
 
     <string-array name="layer_spinner_array">
         <item>Water</item>

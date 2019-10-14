@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".label.SymbolLayerMapillaryActivity">
+
+    <com.mapbox.mapboxsdk.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:mapbox_cameraTargetLat="37.753971"
+            app:mapbox_cameraTargetLng="-122.439004"
+            app:mapbox_cameraTilt="25"
+            app:mapbox_cameraZoom="11"
+            />
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_on_top_of_map"
+            android:layout_width="match_parent"
+            android:layout_height="178dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone" />
+
+</FrameLayout>
