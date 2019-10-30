@@ -7,8 +7,8 @@
     android:orientation="vertical">
 
     <ProgressBar
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="@dimen/dp40"
+        android:layout_height="@dimen/dp40"
         />
 
     <TextView

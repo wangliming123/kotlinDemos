@@ -1,4 +1,4 @@
-package com.wlm.livedatademo
+package com.wlm.livedatademo.room
 
 import androidx.room.*
 

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">LiveDataDemo</string>
+    <string name="str_username">userName</string>
+    <string name="str_nickname">nickName</string>
+    <string name="str_password">password</string>
+    <string name="str_saveuser">saveUser</string>
 </resources>
