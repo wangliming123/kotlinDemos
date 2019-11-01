@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">mvvmDemo</string>
+    <string name="str_search_article">\u00A0\u00A0搜索文章</string>
+</resources>

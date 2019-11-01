@@ -1,2 +1,2 @@
-include ':app', ':livedatademo'
+include ':app', ':livedatademo', ':mvvmdemo', ':baselib'
 rootProject.name='MvpDemos'
