@@ -43,6 +43,11 @@
 
             </androidx.appcompat.widget.Toolbar>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp0_5"
+                android:background="@color/title_divider"/>
+
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabMain"
                 android:layout_width="match_parent"

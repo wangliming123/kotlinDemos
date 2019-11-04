@@ -13,11 +13,15 @@ import kotlinx.coroutines.coroutineScope
 open class BaseViewModel : ViewModel(), LifecycleObserver {
     val mException: MutableLiveData<Throwable> = MutableLiveData()
 
+    /**
+     * @param handleCancellationExceptionManually 是否修改Exception值（是否调用BaseVMFragment(Activity)的onError方法）
+     */
     suspend fun tryCatch(
         tryBlock: suspend CoroutineScope.() -> Unit,
         catchBlock: suspend CoroutineScope.(Throwable) -> Unit = {},
         finallyBlock: suspend CoroutineScope.() -> Unit = {},
-        handleCancellationExceptionManually: Boolean = false) {
+        handleCancellationExceptionManually: Boolean = false
+    ) {
         coroutineScope {
             try {
                 tryBlock()

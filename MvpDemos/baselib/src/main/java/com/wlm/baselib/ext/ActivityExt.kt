@@ -5,10 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
+import androidx.fragment.app.Fragment
 import java.io.Serializable
 
 /**
- * Activity 扩展
+ * Activity、Fragment 扩展
  */
 
 inline fun <reified T : Activity> Activity.startKtxActivity(
@@ -21,6 +22,20 @@ inline fun <reified T : Activity> Activity.startKtxActivity(
     value?.let { list.add(it) }
     values?.let { list.addAll(it) }
     startActivity(getKtxIntent<T>(flags, extra, list))
+}
+
+inline fun <reified T : Activity> Fragment.startKtxActivity(
+    flags: Int? = null,
+    extra: Bundle? = null,
+    value: Pair<String, Any>? = null,
+    values: Collection<Pair<String, Any>?>? = null
+) {
+    activity?.let { activity ->
+        val list = ArrayList<Pair<String, Any>?>()
+        value?.let { list.add(it) }
+        values?.let { list.addAll(it) }
+        startActivity(activity.getKtxIntent<T>(flags, extra, list))
+    }
 }
 
 inline fun <reified T : Context> Context.getKtxIntent(

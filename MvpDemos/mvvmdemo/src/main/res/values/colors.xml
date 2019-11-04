@@ -10,4 +10,6 @@
     <color name="tab_indicator_color">#ADBE107E</color>
 
     <color name="red">#ff0000</color>
+    <color name="divider">#e2e2e2</color>
+    <color name="title_divider">#22aeea</color>
 </resources>

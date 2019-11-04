@@ -2,6 +2,7 @@ package com.wlm.mvvmdemo.net
 
 import com.wlm.baselib.net.CustomResponse
 import com.wlm.mvvmdemo.bean.ArticleList
+import com.wlm.mvvmdemo.bean.BannerData
 import com.wlm.mvvmdemo.bean.User
 import retrofit2.http.*
 
@@ -23,6 +24,9 @@ interface ApiService {
                  @Field("password") password: String,
                  @Field("repassword") rePassword: String): CustomResponse<User>
 
-    @GET("/article/list/{page}/json")
-    fun getArticles(@Path("page") page: Int): CustomResponse<ArticleList>
+    @GET("article/list/{page}/json")
+    suspend fun getArticles(@Path("page") page: Int): CustomResponse<ArticleList>
+
+    @GET("banner/json")
+    suspend fun getBanners(): CustomResponse<List<BannerData>>
 }

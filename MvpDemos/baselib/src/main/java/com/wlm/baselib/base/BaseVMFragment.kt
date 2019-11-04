@@ -20,8 +20,8 @@ abstract class BaseVMFragment<VM : BaseViewModel> : Fragment() {
         return inflater.inflate(layoutId(), container, false)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initVM()
         startObserve()
         initView()
