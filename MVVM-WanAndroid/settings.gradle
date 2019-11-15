@@ -1,0 +1,2 @@
+include ':app', ':roompagingdemo'
+rootProject.name='MVVM-WanAndroid'

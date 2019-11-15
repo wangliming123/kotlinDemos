@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">MVVM-WanAndroid</string>
+
+    <string name="str_home">首页</string>
+    <string name="str_we_chat">公众号</string>
+    <string name="str_project">项目</string>
+    <string name="str_navigation">导航</string>
+    <string name="str_knowledge_tree">知识体系</string>
+
+    <string name="str_favorites">收藏</string>
+    <string name="str_todo">待办清单</string>
+    <string name="str_night_mode">夜间模式</string>
+    <string name="str_setting">设置</string>
+    <string name="str_logout">退出登录</string>
+    <string name="str_about">关于</string>
+    <string name="user_name">用户名</string>
+
+
+    <string name="search">搜索</string>
+    <string name="scan">扫码</string>
+    <string name="str_exit_hint">再按一次退出</string>
+    <string name="str_no_more">没有更多了</string>
+
+    <string name="str_is_loading">正在加载…</string>
+
+</resources>
