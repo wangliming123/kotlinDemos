@@ -1,5 +1,6 @@
 package com.wlm.mvvmdemo.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.wlm.baselib.base.BaseViewModel
@@ -34,6 +35,21 @@ class HomeViewModel : BaseViewModel() {
                 {
                     val result = withContext(Dispatchers.IO) { homeRepository.getBanners() }
                     executeResponse(result, { mBannerList.value = result.data }, {})
+                },
+                handleCancellationExceptionManually = true
+            )
+        }
+    }
+
+    fun collectArticle(id: Int, collect: Boolean) {
+        viewModelScope.launch {
+            tryCatch(
+                {
+                    val result = withContext(Dispatchers.IO) {
+                        if (collect)  homeRepository.collectArticle(id)
+                        else homeRepository.unCollectArticle(id)
+                    }
+                    Log.d("articleList", result.toString())
                 },
                 handleCancellationExceptionManually = true
             )

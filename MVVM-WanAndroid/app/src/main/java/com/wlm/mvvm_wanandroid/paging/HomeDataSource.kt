@@ -23,11 +23,13 @@ class HomeDataSource(private val homeViewModel: HomeViewModel) :
                 tryCatch(
                     tryBlock = {
                         //同步获取banner和article
-                        val bannerJob = async { homeRepository.getBanners() }
-                        val articleJob = async { homeRepository.getArticleList(page) }
-
-                        val bannerResult = bannerJob.await()
-                        val result = articleJob.await()
+//                        val bannerJob = async { homeRepository.getBanners() }
+//                        val articleJob = async { homeRepository.getArticleList(page) }
+//
+//                        val bannerResult = bannerJob.await()
+//                        val result = articleJob.await()
+                        val result = homeRepository.getArticleList(page)
+                        val bannerResult = homeRepository.getBanners()
                         executeResponse(result, {
                             page = result.data?.curPage!!
                             //将banner数据放入article数据的的第一条(article.size + 1)

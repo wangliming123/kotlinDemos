@@ -3,11 +3,11 @@ package com.wlm.baselib.ext
 import android.content.Context
 import android.view.View
 
-fun Context.dp2xp(dp: Int): Int {
+fun Context.dp2px(dp: Int): Int {
     val scale = resources.displayMetrics.density
     return (dp * scale + 0.5f).toInt()
 }
-fun View.dp2xp(dp: Int): Int {
+fun View.dp2px(dp: Int): Int {
     val scale = resources.displayMetrics.density
     return (dp * scale + 0.5f).toInt()
 }

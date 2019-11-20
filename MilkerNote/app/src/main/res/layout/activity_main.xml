@@ -1,50 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/content"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-
-    <EditText
-        android:id="@+id/et_title"
+    
+    <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp50"
-        android:ellipsize="end"
-        android:gravity="center_vertical"
-        android:maxLines="1"
-        android:paddingStart="@dimen/dp20"
-        android:paddingEnd="@dimen/dp10"
-        android:textSize="@dimen/sp12" />
-
-    <ScrollView
-        android:layout_below="@+id/et_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.wlm.milkernote.view.RichEditText
-            android:id="@+id/et_text"
+        android:layout_height="?actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:titleTextColor="@color/text_color_normal">
+        <EditText
+            android:id="@+id/et_main_search"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="@dimen/dp10"
-            android:gravity="start|top"
-            android:background="@null"
-            android:minLines="4"
-            android:paddingStart="@dimen/dp20"
-            android:paddingEnd="@dimen/dp20"
-            android:textSize="@dimen/sp12"
-            app:relativeSize="1.2"
-            app:richColor="@color/text_color_normal" />
+            android:layout_marginEnd="@dimen/dp10"
+            android:layout_marginBottom="@dimen/dp10"
+            android:background="#33000000"
+            android:drawableStart="@drawable/search"
+            android:gravity="center_vertical"
+            android:hint="@string/str_search_note"
+            android:textColor="@color/black"
+            android:paddingStart="@dimen/dp5"/>
+    </androidx.appcompat.widget.Toolbar>
 
-    </ScrollView>
-
-
-    <com.wlm.milkernote.view.ToolView
-        android:id="@+id/tools"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_note"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp50"
-        android:layout_alignParentBottom="true"/>
+        android:padding="@dimen/dp10"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-</RelativeLayout>
+</LinearLayout>

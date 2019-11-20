@@ -11,6 +11,7 @@ interface ApiService {
 
     companion object {
         const val BASE_URL = "https://www.wanandroid.com/"
+        const val TOOL_URL = "http://www.wanandroid.com/tools"
     }
 
     @FormUrlEncoded
@@ -29,4 +30,16 @@ interface ApiService {
 
     @GET("banner/json")
     suspend fun getBanners(): CustomResponse<List<BannerData>>
+
+    @POST("lg/collect/{id}/json")
+    suspend fun collectArticle(@Path("id") id: Int): CustomResponse<ArticleList>
+
+    @POST("lg/uncollect_originId/{id}/json")
+    suspend fun unCollectArticle(@Path("id") id: Int): CustomResponse<ArticleList>
+
+    @GET("user/logout/json")
+    suspend fun logout() : CustomResponse<Any>
+
+    @GET("user_article/list/{page}/json")
+    suspend fun getSquareArticleList(@Path("page") page: Int): CustomResponse<ArticleList>
 }

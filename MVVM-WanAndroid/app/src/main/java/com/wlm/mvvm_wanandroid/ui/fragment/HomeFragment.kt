@@ -21,9 +21,11 @@ class HomeFragment : BaseVMFragment<HomeViewModel>() {
     override fun init() {
         super.init()
 
+        multipleStatusView = multiple_status_view
+
         rv_home.adapter = adapter
 
-        refresh_layout.setColorSchemeColors(Color.GREEN, Color.YELLOW, Color.BLUE)
+        refresh_layout.setColorSchemeColors(Color.GREEN, Color.BLUE)
         refresh_layout.setOnRefreshListener {
             isRefreshFromPull = true
             mViewModel.refresh()
@@ -40,16 +42,33 @@ class HomeFragment : BaseVMFragment<HomeViewModel>() {
             uiState.observe(this@HomeFragment, Observer {
                 refresh_layout.isRefreshing = it.loading
 
-                it.success?.let {
+                if (it.loading) {
+                    if (isRefreshFromPull) {
+                        isRefreshFromPull = false
+                    } else {
+                        multipleStatusView?.showLoading()
+                    }
+                }
 
+                it.success?.let {
+                    if (it.datas.isEmpty()) {
+                        multipleStatusView?.showEmpty()
+                    }else {
+                        multipleStatusView?.showContent()
+                    }
                 }
 
                 it.error?.let {
-
+                    multipleStatusView?.showError()
+                    Logger.d("load_error", it)
                 }
             })
 
             initLoad()
         }
+    }
+
+    override fun retry() {
+        mViewModel.refresh()
     }
 }

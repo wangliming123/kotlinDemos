@@ -1,13 +1,12 @@
-package com.wlm.mvvmdemo.ui
+package com.wlm.mvvmdemo.ui.activity
 
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import com.wlm.baselib.base.BaseVMActivity
-import com.wlm.baselib.ext.startKtxActivity
 import com.wlm.baselib.utils.ToastUtils
 import com.wlm.mvvmdemo.viewmodel.LoginViewModel
 import com.wlm.mvvmdemo.R
-import com.wlm.mvvmdemo.repository.LoginRepository
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseVMActivity<LoginViewModel>() {
@@ -22,10 +21,12 @@ class LoginActivity : BaseVMActivity<LoginViewModel>() {
             uiState.observe(this@LoginActivity, Observer {
                 if (it.showProgress) showProgressDialog()
 
-                it.showSuccess?.let {
+                it.showSuccess?.let { user ->
                     dismissProgressDialog()
+                    Log.d("Login", user.toString())
                     ToastUtils.showShort(this@LoginActivity, "登录成功")
-                    startKtxActivity<MainActivity>()
+                    finish()
+//                    startKtxActivity<MainActivity>()
                 }
 
                 it.showError?.let { error ->
@@ -41,9 +42,9 @@ class LoginActivity : BaseVMActivity<LoginViewModel>() {
     }
 
     override fun initData() {
-        if (LoginRepository.isLogin) {
-            startKtxActivity<MainActivity>()
-        }
+//        if (LoginRepository.isLogin) {
+//            startKtxActivity<MainActivity>()
+//        }
     }
 
     override fun initView() {

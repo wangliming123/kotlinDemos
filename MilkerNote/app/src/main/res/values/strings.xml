@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MilkerNote</string>
     <string name="str_cap_a">A</string>
+    <string name="str_search_note">搜索笔记</string>
 </resources>

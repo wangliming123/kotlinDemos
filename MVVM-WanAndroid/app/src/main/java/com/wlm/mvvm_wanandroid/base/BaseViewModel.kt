@@ -3,7 +3,6 @@ package com.wlm.mvvm_wanandroid.base
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
 
@@ -26,11 +25,9 @@ open class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
             try {
                 tryBlock()
             } catch (e: Throwable) {
-                if (e !is CancellationException || handleCancellationExceptionManually) {
+                catchBlock(e)
+                if (handleCancellationExceptionManually) {
                     mException.value = e
-                    catchBlock(e)
-                } else {
-                    throw e
                 }
             } finally {
                 finallyBlock()

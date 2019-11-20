@@ -1,4 +1,4 @@
-package com.wlm.mvvmdemo.ui
+package com.wlm.mvvmdemo.ui.fragment
 
 import android.util.Log
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.wlm.baselib.base.BaseVMFragment
-import com.wlm.baselib.ext.dp2xp
+import com.wlm.baselib.ext.dp2px
 import com.wlm.baselib.ext.startKtxActivity
 import com.wlm.baselib.view.CustomLoadMoreView
 import com.wlm.baselib.view.SpaceItemDecoration
@@ -15,6 +15,8 @@ import com.wlm.mvvmdemo.adapter.HomeArticleAdapter
 import com.wlm.mvvmdemo.bean.ArticleList
 import com.wlm.mvvmdemo.bean.BannerData
 import com.wlm.mvvmdemo.repository.LoginRepository
+import com.wlm.mvvmdemo.ui.activity.BrowserActivity
+import com.wlm.mvvmdemo.ui.activity.LoginActivity
 import com.wlm.mvvmdemo.util.GlideImageLoader
 import com.wlm.mvvmdemo.viewmodel.HomeViewModel
 import com.youth.banner.Banner
@@ -38,7 +40,7 @@ class HomeFragment : BaseVMFragment<HomeViewModel>() {
     override fun initView() {
         rvHome.run {
             layoutManager = LinearLayoutManager(activity)
-            addItemDecoration(SpaceItemDecoration(dp2xp(10)))
+            addItemDecoration(SpaceItemDecoration(dp2px(10)))
         }
         initBanner()
         initAdapter()
@@ -50,7 +52,7 @@ class HomeFragment : BaseVMFragment<HomeViewModel>() {
         refresh()
     }
 
-    private fun refresh() {
+    fun refresh() {
         articleAdapter.setEnableLoadMore(false)
         homeRefreshLayout.isRefreshing = true
         currentPage = 0
@@ -59,7 +61,7 @@ class HomeFragment : BaseVMFragment<HomeViewModel>() {
 
     private fun initBanner() {
         banner.run {
-            layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp2xp(200))
+            layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp2px(200))
             setBannerStyle(BannerConfig.NUM_INDICATOR_TITLE)
             setImageLoader(GlideImageLoader())
             setOnBannerListener { position ->
@@ -71,8 +73,8 @@ class HomeFragment : BaseVMFragment<HomeViewModel>() {
 
     private fun initAdapter() {
         articleAdapter.run {
-            setOnItemClickListener { adapter, view, position ->
-                //todo itemClick
+            setOnItemClickListener { _, _, position ->
+                startKtxActivity<BrowserActivity>(value = BrowserActivity.KEY_URL to articleAdapter.data[position].link)
             }
             onItemChildClickListener = this@HomeFragment.onItemChildClickListener
             addHeaderView(banner)
@@ -90,7 +92,7 @@ class HomeFragment : BaseVMFragment<HomeViewModel>() {
                         articleAdapter.run {
                             data[position].run {
                                 collect = !collect
-                                //todo
+                                mViewModel.collectArticle(id, collect)
                             }
                             notifyDataSetChanged()
                         }

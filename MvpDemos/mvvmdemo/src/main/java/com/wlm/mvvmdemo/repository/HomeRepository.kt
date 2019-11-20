@@ -15,4 +15,12 @@ class HomeRepository : BaseRepository() {
         return apiCall { RetrofitManager.service.getBanners() }
     }
 
+    suspend fun collectArticle(id: Int): CustomResponse<ArticleList> {
+        return apiCall { RetrofitManager.service.collectArticle(id) }
+    }
+
+    suspend fun unCollectArticle(id: Int): CustomResponse<ArticleList> {
+        return apiCall { RetrofitManager.service.unCollectArticle(id) }
+    }
+
 }

@@ -10,7 +10,7 @@ suspend fun executeResponse(
     errorBlock: suspend CoroutineScope.() -> Unit
 ) {
     coroutineScope {
-        if (response.errorCode == -1) errorBlock
+        if (response.errorCode == -1) errorBlock()
         else successBlock()
     }
 }

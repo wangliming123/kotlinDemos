@@ -4,19 +4,22 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.wlm.baselib.utils.ToastUtils
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 
 /**
  * Activity基类
  */
-abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
+abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks,
+    CoroutineScope by MainScope() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutId())
-        initData()
         initView()
+        initData()
         initListener()
     }
 
@@ -26,14 +29,14 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
     abstract fun layoutId(): Int
 
     /**
-     * 初始化数据
-     */
-    abstract fun initData()
-
-    /**
      * 初始化View
      */
     abstract fun initView()
+
+    /**
+     * 初始化数据
+     */
+    abstract fun initData()
 
     abstract fun initListener()
 

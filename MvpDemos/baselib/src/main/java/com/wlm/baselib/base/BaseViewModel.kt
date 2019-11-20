@@ -1,5 +1,6 @@
 package com.wlm.baselib.base
 
+import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,7 +11,7 @@ import kotlinx.coroutines.coroutineScope
 /**
  * ViewModel 基类
  */
-open class BaseViewModel : ViewModel(), LifecycleObserver {
+open class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
     val mException: MutableLiveData<Throwable> = MutableLiveData()
 
     /**
