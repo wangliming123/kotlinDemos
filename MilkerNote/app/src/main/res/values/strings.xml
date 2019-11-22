@@ -2,4 +2,14 @@
     <string name="app_name">MilkerNote</string>
     <string name="str_cap_a">A</string>
     <string name="str_search_note">搜索笔记</string>
+    <string name="str_finish">完成</string>
+    <string name="str_choose_pic">选择图片</string>
+    <string name="str_text_size">字号</string>
+    <string name="str_text_size_add">A+</string>
+    <string name="str_text_size_sub">A-</string>
+    <string name="str_num_10">10</string>
+    <string name="str_text_color">字色</string>
+    <string name="str_click_input_title">点击输入标题</string>
+    <string name="str_time_format">2019-11-11 09:24</string>
+    <string name="str_delete">删除</string>
 </resources>

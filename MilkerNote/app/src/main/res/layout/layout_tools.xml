@@ -1,25 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/dp50">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_text_size"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_tool_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/dp20"
+            android:paddingStart="@dimen/dp10"
+            android:paddingTop="@dimen/dp5"
+            android:paddingEnd="@dimen/dp10"
+            android:paddingBottom="@dimen/dp5"
+            android:text="@string/str_cap_a"
+            android:textSize="@dimen/sp24" />
+
+        <ImageView
+            android:id="@+id/iv_open_pic"
+            android:layout_width="@dimen/dp45"
+            android:layout_height="@dimen/dp45"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/dp20"
+            android:contentDescription="@string/str_choose_pic"
+            android:padding="@dimen/dp5"
+            android:src="@mipmap/ic_open_pic" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp0_5"
+        android:background="@color/divider" />
+
+    <LinearLayout
+        android:id="@+id/ll_text_tool"
+        android:visibility="gone"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp20"
-        android:layout_gravity="center_vertical"
-        android:textSize="@dimen/sp24"
-        android:text="@string/str_cap_a"/>
+        android:layout_marginBottom="@dimen/dp20"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_text_color"
-        android:layout_width="@dimen/dp40"
-        android:layout_height="@dimen/dp20"
-        android:layout_marginStart="@dimen/dp20"
-        android:layout_gravity="center_vertical"
-        android:textSize="@dimen/sp24"
-        android:background="@color/text_color_normal"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp40"
+            android:layout_marginStart="@dimen/dp15"
+            android:gravity="center_vertical"
+            android:text="@string/str_text_size"
+            android:textColor="@color/text_color_normal"
+            android:textSize="@dimen/sp16" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40">
+
+            <TextView
+                android:id="@+id/tv_text_size_sub"
+                android:layout_width="@dimen/dp40"
+                android:layout_height="@dimen/dp40"
+                android:layout_marginStart="@dimen/dp10"
+                android:gravity="center"
+                android:text="@string/str_text_size_sub"
+                android:textColor="@color/text_color_normal"
+                android:textSize="@dimen/sp16" />
+
+            <TextView
+                android:id="@+id/tv_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/str_num_10"
+                android:textColor="@color/text_color_normal"
+                android:textSize="@dimen/sp16" />
+
+            <TextView
+                android:id="@+id/tv_text_size_add"
+                android:layout_width="@dimen/dp40"
+                android:layout_height="@dimen/dp40"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/dp10"
+                android:gravity="center"
+                android:text="@string/str_text_size_add"
+                android:textColor="@color/text_color_normal"
+                android:textSize="@dimen/sp16" />
+
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp0_5"
+            android:background="@color/divider" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp40"
+            android:layout_marginStart="@dimen/dp15"
+            android:gravity="center_vertical"
+            android:text="@string/str_text_color"
+            android:textColor="@color/text_color_normal"
+            android:textSize="@dimen/sp16" />
+
+        <RadioGroup
+            android:id="@+id/rg_text_color"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/dp10"
+            android:paddingEnd="@dimen/dp10">
+
+            <RadioButton
+                android:id="@+id/text_color_default"
+                android:checked="true"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="0sp"
+                android:padding="@dimen/dp5"
+                android:drawableTop="@drawable/radio_default"
+                android:button="@null"/>
+
+
+            <RadioButton
+                android:id="@+id/text_color_black"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="0sp"
+                android:padding="@dimen/dp5"
+                android:drawableTop="@drawable/radio_black"
+                android:button="@null"/>
+            <RadioButton
+                android:id="@+id/text_color_red"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="0sp"
+                android:padding="@dimen/dp5"
+                android:drawableTop="@drawable/radio_red"
+                android:button="@null"/>
+            <RadioButton
+                android:id="@+id/text_color_green"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="0sp"
+                android:padding="@dimen/dp5"
+                android:drawableTop="@drawable/radio_green"
+                android:button="@null"/>
+
+            <RadioButton
+                android:id="@+id/text_color_blue"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="0sp"
+                android:padding="@dimen/dp5"
+                android:drawableTop="@drawable/radio_blue"
+                android:button="@null"/>
+
+            <RadioButton
+                android:id="@+id/text_color_orange"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="0sp"
+                android:padding="@dimen/dp5"
+                android:drawableTop="@drawable/radio_orange"
+                android:button="@null"/>
+        </RadioGroup>
+
+    </LinearLayout>
 
 </LinearLayout>

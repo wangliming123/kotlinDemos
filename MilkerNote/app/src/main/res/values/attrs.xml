@@ -3,5 +3,10 @@
     <declare-styleable name="RichEditText">
         <attr name="relativeSize" format="float"/>
         <attr name="richColor" format="color"/>
+        <attr name="baseTextSize" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="CircleView">
+        <attr name="circleColor" format="color"/>
     </declare-styleable>
 </resources>

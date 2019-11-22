@@ -2,19 +2,19 @@ package com.wlm.milkernote.utils
 
 import android.app.Activity
 import android.graphics.Rect
-import android.os.Build
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
-import com.wlm.milkernote.Weak
+import com.wlm.milkernote.delegate.Weak
 
-object SoftHideKeyBoardUtils {
+object SoftKeyBoardUtils {
     private var isFirst = true
     private var contentHeight = 0
     private var usableHeightPrevious = 0
     private lateinit var frameLayoutParams: FrameLayout.LayoutParams
-    private var rootView by Weak<View> {
-        null
-    }
+    var keyBoardHeight = 0
+        private set
+    private var rootView by Weak<View> { null }
 
     fun init(activity: Activity) {
         //找到Activity的最外层布局控件，它其实是一个DecorView,它所用的控件就是FrameLayout
@@ -29,11 +29,10 @@ object SoftHideKeyBoardUtils {
                     isFirst = false
                 }
                 //当前布局发生变化时，对Activity的xml布局进行重绘
-                possiblyResizeChildOfContent();
+                possiblyResizeChildOfContent()
             }
             frameLayoutParams = layoutParams as FrameLayout.LayoutParams
         }
-        val id = activity.resources.getIdentifier("status_bar_height", "dimen", "android")
     }
 
     // 获取界面可用高度，如果软键盘弹起后，Activity的xml布局可用高度需要减去键盘高度
@@ -48,10 +47,11 @@ object SoftHideKeyBoardUtils {
             val heightDifference = usableHeightSansKeyboard - usableHeightNow
             //高度差大于屏幕1/4时，说明键盘弹出
             if (heightDifference > (usableHeightSansKeyboard / 4)) {
+                keyBoardHeight = heightDifference
                 // 键盘弹出了，Activity的xml布局高度应当减去键盘高度
                 frameLayoutParams.height = usableHeightSansKeyboard - heightDifference
             } else {
-                frameLayoutParams.height = contentHeight;
+                frameLayoutParams.height = contentHeight
             }
             //7､ 重绘Activity的xml布局
             rootView?.requestLayout()
@@ -61,8 +61,23 @@ object SoftHideKeyBoardUtils {
 
     private fun computeUsableHeight(): Int {
         val rect = Rect()
-        rootView?.getWindowVisibleDisplayFrame(rect);
+        rootView?.getWindowVisibleDisplayFrame(rect)
         // 全屏模式下：直接返回r.bottom，r.top其实是状态栏的高度
         return (rect.bottom - rect.top)
+    }
+
+    fun hideSoftKeyboard(view: View) {
+        val inputMethodManager =
+            view.context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
+        inputMethodManager?.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    fun showSoftKeyboard(view: View) {
+        val inputMethodManager =
+            view.context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
+        inputMethodManager?.let {
+            view.requestFocus()
+            it.showSoftInput(view, 0)
+        }
     }
 }

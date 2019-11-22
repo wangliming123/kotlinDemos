@@ -1,4 +1,4 @@
-package com.wlm.milkernote
+package com.wlm.milkernote.delegate
 
 import java.lang.ref.WeakReference
 import kotlin.reflect.KProperty

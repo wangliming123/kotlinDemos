@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".CreateActivity">
 
+    <include layout="@layout/layout_header" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp0_5"
+        android:background="@color/divider" />
 
     <EditText
         android:id="@+id/et_title"
@@ -13,37 +24,28 @@
         android:layout_height="@dimen/dp50"
         android:ellipsize="end"
         android:gravity="center_vertical"
+        android:background="@null"
         android:maxLines="1"
         android:paddingStart="@dimen/dp20"
         android:paddingEnd="@dimen/dp10"
-        android:textSize="@dimen/sp12" />
+        android:hint="@string/str_click_input_title"
+        android:textSize="@dimen/sp16"
+        android:textColor="@color/black"/>
 
-    <ScrollView
-        android:layout_below="@+id/et_title"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="@dimen/dp1"
+        android:background="@color/divider"/>
 
-        <com.wlm.milkernote.view.RichEditText
-            android:id="@+id/et_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp10"
-            android:gravity="start|top"
-            android:background="@null"
-            android:minLines="4"
-            android:paddingStart="@dimen/dp20"
-            android:paddingEnd="@dimen/dp20"
-            android:textSize="@dimen/sp12"
-            app:relativeSize="1.2"
-            app:richColor="@color/text_color_normal" />
-
-    </ScrollView>
-
-
-    <com.wlm.milkernote.view.ToolView
-        android:id="@+id/tools"
+    <com.wlm.milkernote.view.RichEditText
+        android:id="@+id/rich_edit_text"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp50"
-        android:layout_alignParentBottom="true"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/dp10"
+        app:relativeSize="1.6"
+        app:richColor="@color/text_color_normal"
+        app:baseTextSize="@dimen/sp10"/>
 
-</RelativeLayout>
+
+</LinearLayout>
