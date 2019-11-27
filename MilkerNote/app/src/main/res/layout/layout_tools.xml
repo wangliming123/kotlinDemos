@@ -24,7 +24,7 @@
             android:textSize="@dimen/sp24" />
 
         <ImageView
-            android:id="@+id/iv_open_pic"
+            android:id="@+id/iv_tool_open_pic"
             android:layout_width="@dimen/dp45"
             android:layout_height="@dimen/dp45"
             android:layout_gravity="center_vertical"

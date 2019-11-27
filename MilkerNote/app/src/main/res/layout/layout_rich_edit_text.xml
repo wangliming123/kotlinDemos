@@ -10,8 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@null"
+        android:layout_above="@id/tools"
         android:gravity="start|top"
         android:scrollbars="vertical"
+        android:paddingBottom="@dimen/dp40"
         android:paddingStart="@dimen/dp20"
         android:paddingEnd="@dimen/dp20"
         android:textSize="@dimen/sp10" />

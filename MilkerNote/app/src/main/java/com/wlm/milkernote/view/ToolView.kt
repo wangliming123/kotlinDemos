@@ -1,6 +1,9 @@
 package com.wlm.milkernote.view
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.provider.MediaStore
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -28,6 +31,12 @@ class ToolView(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
                 View.VISIBLE -> View.GONE
                 View.GONE -> View.VISIBLE
                 else -> View.GONE
+            }
+        }
+        iv_tool_open_pic.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            if (mContext is Activity) {
+                mContext.startActivityForResult(intent, 102)
             }
         }
     }

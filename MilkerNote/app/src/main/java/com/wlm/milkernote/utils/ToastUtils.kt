@@ -1,4 +1,4 @@
-package com.wlm.mvvm_wanandroid.utils
+package com.wlm.milkernote.utils
 
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.wlm.milkernote.R
-import com.wlm.mvvm_wanandroid.MyApp
+import com.wlm.milkernote.MyApp
 
 class ToastUtils {
     companion object {

@@ -44,8 +44,7 @@
         android:layout_weight="1"
         android:layout_marginTop="@dimen/dp10"
         app:relativeSize="1.6"
-        app:richColor="@color/text_color_normal"
-        app:baseTextSize="@dimen/sp10"/>
+        app:richColor="@color/text_color_normal"/>
 
 
 </LinearLayout>

@@ -3,7 +3,7 @@ package com.wlm.milkernote.viewmodel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.wlm.milkernote.db.AppDataBase
-import com.wlm.mvvm_wanandroid.base.BaseViewModel
+import com.wlm.milkernote.base.BaseViewModel
 
 class MainViewModel : BaseViewModel() {
     private val dao by lazy { AppDataBase.instance.getNoteDao() }

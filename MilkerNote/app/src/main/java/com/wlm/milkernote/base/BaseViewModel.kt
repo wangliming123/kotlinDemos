@@ -1,4 +1,4 @@
-package com.wlm.mvvm_wanandroid.base
+package com.wlm.milkernote.base
 
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.MutableLiveData

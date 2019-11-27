@@ -14,16 +14,27 @@ android {
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.1"
 
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        signRelease {
+            keyAlias 'wlmdev'
+            keyPassword 'wlm123'
+            storeFile file('E:/kotlinDemos/wlmSign.jks')
+            storePassword 'wlm123'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.signRelease
         }
     }
 
@@ -69,6 +80,9 @@ dependencies {
     //Paging
     implementation "androidx.paging:paging-runtime:2.1.0"
     //room
-    implementation "androidx.room:room-runtime:2.2.1"
-    kapt "androidx.room:room-compiler:2.2.1"
+    implementation "androidx.room:room-runtime:2.2.2"
+    kapt "androidx.room:room-compiler:2.2.2"
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
 }

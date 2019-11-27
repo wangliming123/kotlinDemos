@@ -1,4 +1,4 @@
-package com.wlm.mvvm_wanandroid.utils
+package com.wlm.milkernote.utils
 
 import android.os.Build
 

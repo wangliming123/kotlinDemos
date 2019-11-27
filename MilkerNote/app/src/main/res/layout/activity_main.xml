@@ -10,25 +10,27 @@
     tools:context=".MainActivity">
     
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/main_tool"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:titleTextColor="@color/text_color_normal">
-        <EditText
-            android:id="@+id/et_main_search"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/dp10"
-            android:layout_marginEnd="@dimen/dp10"
-            android:layout_marginBottom="@dimen/dp10"
-            android:background="#33000000"
-            android:drawableStart="@drawable/search"
-            android:gravity="center_vertical"
-            android:hint="@string/str_search_note"
-            android:textColor="@color/black"
-            android:paddingStart="@dimen/dp5"
-            android:paddingEnd="@dimen/dp5"/>
+        app:titleTextColor="@color/black">
+<!--        <EditText-->
+<!--            android:id="@+id/et_main_search"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginTop="@dimen/dp10"-->
+<!--            android:layout_marginEnd="@dimen/dp10"-->
+<!--            android:layout_marginBottom="@dimen/dp10"-->
+<!--            android:background="#f3f3f3"-->
+<!--            android:drawableStart="@drawable/search"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:hint="@string/str_search_note"-->
+<!--            android:textColor="@color/text_color_normal"-->
+<!--            android:textSize="@dimen/sp14"-->
+<!--            android:paddingStart="@dimen/dp5"-->
+<!--            android:paddingEnd="@dimen/dp5"/>-->
     </androidx.appcompat.widget.Toolbar>
     
     <View
@@ -39,16 +41,17 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_note"
         android:layout_width="match_parent"
-        android:padding="@dimen/dp10"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add_note"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/dp50"
+        android:layout_height="@dimen/dp50"
         android:layout_gravity="bottom|center_horizontal"
+        app:fabCustomSize="@dimen/dp50"
+        app:elevation="@dimen/dp5"
         app:backgroundTint="@color/colorPrimaryDark"
         android:layout_marginBottom="@dimen/dp10"
         android:src="@drawable/btn_add"/>

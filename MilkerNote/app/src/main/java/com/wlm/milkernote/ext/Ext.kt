@@ -2,7 +2,7 @@ package com.wlm.milkernote.ext
 
 import android.content.Context
 import android.view.View
-import com.wlm.mvvm_wanandroid.base.HttpResponse
+import com.wlm.milkernote.base.HttpResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
 

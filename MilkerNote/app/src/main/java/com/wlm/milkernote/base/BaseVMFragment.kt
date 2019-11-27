@@ -3,7 +3,6 @@ package com.wlm.milkernote.base
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.orhanobut.logger.Logger
-import com.wlm.mvvm_wanandroid.base.BaseViewModel
 
 abstract class BaseVMFragment<VM : BaseViewModel> : BaseFragment() {
     lateinit var mViewModel: VM

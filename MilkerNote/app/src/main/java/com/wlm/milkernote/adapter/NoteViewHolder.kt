@@ -15,13 +15,15 @@ class NoteViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
 ) {
 
     private val context = parent.context
-    private val tvTitle = itemView.findViewById<TextView>(R.id.tvTitle)
-    private val tvTime = itemView.findViewById<TextView>(R.id.tvTime)
+    private val tvTitle = itemView.findViewById<TextView>(R.id.tv_note_title)
+    private val tvTime = itemView.findViewById<TextView>(R.id.tv_note_time)
+    private val tvContent = itemView.findViewById<TextView>(R.id.tv_note_content)
     private var note: Note? = null
     fun bind(note: Note?) {
         this.note = note
         note?.run {
             tvTitle.text = title
+            tvContent.text = content
             tvTime.text = DateUtils.format(updateTime)
         }
 

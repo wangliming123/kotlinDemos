@@ -1,12 +1,10 @@
 package com.wlm.milkernote.view
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.Color
-import android.text.Editable
-import android.text.Spanned
-import android.text.TextWatcher
-import android.text.style.ForegroundColorSpan
-import android.text.style.RelativeSizeSpan
+import android.text.*
+import android.text.style.*
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -14,8 +12,9 @@ import android.widget.RelativeLayout
 import androidx.annotation.ColorInt
 import com.orhanobut.logger.Logger
 import com.wlm.milkernote.R
+import com.wlm.milkernote.utils.HtmlUtils
 import com.wlm.milkernote.utils.SoftKeyBoardUtils
-import com.wlm.mvvm_wanandroid.utils.SharedPrefs
+import com.wlm.milkernote.delegate.SharedPrefs
 import kotlinx.android.synthetic.main.layout_rich_edit_text.view.*
 import kotlinx.android.synthetic.main.layout_tools.view.*
 
@@ -39,6 +38,14 @@ class RichEditText(context: Context, attrs: AttributeSet?, defStyleAttr: Int, de
         var start = 0
         var end = 0
         override fun afterTextChanged(s: Editable?) {
+            if (changeByHtml) {
+                changeByHtml = false
+                return
+            }
+            if (addImage) {
+                addImage = false
+                return
+            }
             s?.run {
                 setSpan(
                     RelativeSizeSpan(relativeSize), start, end,
@@ -55,48 +62,32 @@ class RichEditText(context: Context, attrs: AttributeSet?, defStyleAttr: Int, de
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             this.start = start
             this.end = start + count
-            if (before > 0) {
-                changeText(before)
-            }else {
-                starts.add(start)
-                ends.add(end)
-                colorList.add(color)
-                relativeSizeList.add(relativeSize)
-            }
             Logger.d("onTextChanged: s: $s, start: $start, before: $before,  count: $count")
         }
     }
 
-    private fun changeText(before: Int) {
-        if (before > 0) {
-            val lastLength = ends[ends.size - 1] - starts[starts.size - 1]
-            if (before >= lastLength) {
-                starts.removeAt(starts.size - 1)
-                ends.removeAt(ends.size - 1)
-                colorList.removeAt(colorList.size - 1)
-                relativeSizeList.removeAt(relativeSizeList.size - 1)
-                changeText(before - lastLength)
-            }else {
-                ends[ends.size - 1] -= before
-            }
-        }
-    }
-
-    private val colorList = mutableListOf<Int>()
-    private val relativeSizeList = mutableListOf<Float>()
-    private val starts = mutableListOf<Int>()
-    private val ends = mutableListOf<Int>()
 
     @ColorInt
     var color: Int = Color.parseColor("#000000")
 
     var relativeSize: Float by SharedPrefs(RELATIVE_SIZE_KEY, 1.0f)
 
-    var text: String
+    private var changeByHtml = false//外部传入html改变富文本
+    private var addImage = false//插入图片
+
+    var text: String = ""
         get() = et_text.text.toString()
-        set(value) {
-            et_text.setText(value)
-        }
+        private set
+
+    fun getSavedHtml(): String {
+        return HtmlUtils.toHtml(et_text.text)
+    }
+
+    fun setHtml(html: String, content: String) {
+        val spannableString = HtmlUtils.fromHtml(context, html, content)
+        changeByHtml = true
+        et_text.setText(spannableString)
+    }
 
     init {
         LayoutInflater.from(context).inflate(R.layout.layout_rich_edit_text, this)
@@ -175,5 +166,21 @@ class RichEditText(context: Context, attrs: AttributeSet?, defStyleAttr: Int, de
         tools.visibility = View.GONE
     }
 
+    fun addImage(bitmap: Bitmap) {
+        addImage = true
+        val spannableString = SpannableString("[图片]")
+        ImageSpan(context, bitmap, ImageSpan.ALIGN_BASELINE).source
+        spannableString.setSpan(
+            ImageSpan(context, bitmap, ImageSpan.ALIGN_BASELINE),
+            0, 4, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        val index = et_text.selectionStart
+        if (index < 0 || index > text.length) {
+            et_text.append(spannableString)
+        }else {
+            et_text.text.insert(index, spannableString)
+        }
+
+    }
 
 }

@@ -1,6 +1,6 @@
 package com.wlm.milkernote.viewmodel
 
-import com.wlm.mvvm_wanandroid.base.BaseViewModel
+import com.wlm.milkernote.base.BaseViewModel
 
 class CreateViewModel : BaseViewModel() {
 

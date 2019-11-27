@@ -3,7 +3,7 @@ package com.wlm.milkernote.base
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.orhanobut.logger.Logger
-import com.wlm.mvvm_wanandroid.utils.ToastUtils
+import com.wlm.milkernote.utils.ToastUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import pub.devrel.easypermissions.AppSettingsDialog

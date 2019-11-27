@@ -1,4 +1,4 @@
-package com.wlm.mvvm_wanandroid
+package com.wlm.milkernote
 
 import android.app.Activity
 import android.app.Application
@@ -7,7 +7,6 @@ import androidx.multidex.MultiDexApplication
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
-import com.wlm.milkernote.BuildConfig
 
 class MyApp : MultiDexApplication() {
 

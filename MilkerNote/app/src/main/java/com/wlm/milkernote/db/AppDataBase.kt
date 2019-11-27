@@ -3,7 +3,7 @@ package com.wlm.milkernote.db
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.wlm.mvvm_wanandroid.MyApp
+import com.wlm.milkernote.MyApp
 
 @Database(entities = [Note::class], version = 1)
 abstract class AppDataBase : RoomDatabase() {

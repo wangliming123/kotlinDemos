@@ -4,6 +4,7 @@
     <item
         android:id="@+id/delete"
         android:title="@string/str_delete"
+        android:visible="false"
         android:icon="@mipmap/ic_delete"
         app:showAsAction="ifRoom|collapseActionView"/>
     <item

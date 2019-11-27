@@ -1,7 +1,7 @@
-package com.wlm.mvvm_wanandroid.utils
+package com.wlm.milkernote.delegate
 
 import android.content.Context
-import com.wlm.mvvm_wanandroid.MyApp
+import com.wlm.milkernote.MyApp
 import java.io.*
 import kotlin.reflect.KProperty
 

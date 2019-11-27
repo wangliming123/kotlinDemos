@@ -1,4 +1,4 @@
-package com.wlm.mvvm_wanandroid.base
+package com.wlm.milkernote.base
 
 /**
  * 网络请求通用response
