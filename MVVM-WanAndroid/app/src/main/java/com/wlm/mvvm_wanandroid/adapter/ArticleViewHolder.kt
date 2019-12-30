@@ -32,7 +32,7 @@ class ArticleViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
             else tvDesc.text = desc
             tvChapter.text = when {
                 superChapterName.isNotBlank() and chapterName.isNotBlank() ->
-                    "${superChapterName}/ ${chapterName}"
+                    "${superChapterName}/ $chapterName"
                 superChapterName.isNotBlank() -> superChapterName
                 chapterName.isNotBlank() -> chapterName
                 else -> ""

@@ -1,8 +1,7 @@
-package com.wlm.mvvm_wanandroid.paging
+package com.wlm.mvvm_wanandroid.datasource.home
 
 import androidx.lifecycle.viewModelScope
 import androidx.paging.ItemKeyedDataSource
-import com.orhanobut.logger.Logger
 import com.wlm.mvvm_wanandroid.base.UiState
 import com.wlm.mvvm_wanandroid.bean.Article
 import com.wlm.mvvm_wanandroid.executeResponse
@@ -10,9 +9,9 @@ import com.wlm.mvvm_wanandroid.viewmodel.HomeViewModel
 import kotlinx.coroutines.*
 
 class HomeDataSource(private val homeViewModel: HomeViewModel) :
-    ItemKeyedDataSource<Int, Article>(), CoroutineScope by MainScope() {
+    ItemKeyedDataSource<Int, Article>() {
 
-    var page = 0
+    private var page = 0
     override fun loadInitial(
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<Article>
@@ -54,7 +53,7 @@ class HomeDataSource(private val homeViewModel: HomeViewModel) :
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Article>) {
-        homeViewModel.apply {
+        homeViewModel.run {
             viewModelScope.launch {
                 tryCatch({
                     val result = homeRepository.getArticleList(page)

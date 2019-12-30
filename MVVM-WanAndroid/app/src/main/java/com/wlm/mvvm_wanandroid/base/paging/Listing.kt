@@ -5,5 +5,5 @@ import androidx.paging.PagedList
 
 data class Listing<T>(
     val pagedList: LiveData<PagedList<T>>,
-    val refresh: () -> Unit
+    val refresh: () -> Unit //刷新
 )

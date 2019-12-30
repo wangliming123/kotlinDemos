@@ -9,7 +9,7 @@ import com.wlm.mvvm_wanandroid.bean.Article
 import com.wlm.mvvm_wanandroid.bean.ArticleList
 import com.wlm.mvvm_wanandroid.bean.BannerData
 import com.wlm.mvvm_wanandroid.net.RetrofitManager
-import com.wlm.mvvm_wanandroid.paging.HomeDataSourceFactory
+import com.wlm.mvvm_wanandroid.datasource.home.HomeDataSourceFactory
 import com.wlm.mvvm_wanandroid.viewmodel.HomeViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -27,7 +27,7 @@ class HomeRepository(private val homeViewModel: HomeViewModel) : BaseRepository(
                 .setEnablePlaceholders(true)
                 .build()
         ).build()
-        return Listing(pageList, refresh = {sourceFactory.sourceLivaData.value?.invalidate()})
+        return Listing(pageList, refresh = { sourceFactory.sourceLivaData.value?.invalidate() })
     }
 
     suspend fun getArticleList(page: Int): HttpResponse<ArticleList> {

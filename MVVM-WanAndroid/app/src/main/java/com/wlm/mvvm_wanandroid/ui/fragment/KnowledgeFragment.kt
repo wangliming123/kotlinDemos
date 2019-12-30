@@ -5,16 +5,20 @@ import androidx.lifecycle.Observer
 import com.classic.common.MultipleStatusView
 import com.orhanobut.logger.Logger
 import com.wlm.mvvm_wanandroid.R
-import com.wlm.mvvm_wanandroid.adapter.HomeAdapter
+import com.wlm.mvvm_wanandroid.adapter.KnowledgeAdapter
 import com.wlm.mvvm_wanandroid.base.ui.BaseVMFragment
-import com.wlm.mvvm_wanandroid.viewmodel.HomeViewModel
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.wlm.mvvm_wanandroid.bean.Knowledge
+import com.wlm.mvvm_wanandroid.viewmodel.KnowledgeViewModel
+import kotlinx.android.synthetic.main.refresh_layout.*
+import kotlinx.android.synthetic.main.refresh_layout.multiple_status_view
 
-class HomeFragment : BaseVMFragment<HomeViewModel>() {
-    override val layoutId = R.layout.fragment_home
-    override val providerVMClass = HomeViewModel::class.java
+class KnowledgeFragment(private val knowledge: Knowledge) : BaseVMFragment<KnowledgeViewModel>(){
 
-    private val adapter by lazy { HomeAdapter() }
+    override val providerVMClass: Class<KnowledgeViewModel> = KnowledgeViewModel::class.java
+
+    override val layoutId: Int = R.layout.refresh_layout
+
+    private val adapter by lazy { KnowledgeAdapter() }
 
     private var isRefreshFromPull = false
 
@@ -22,11 +26,12 @@ class HomeFragment : BaseVMFragment<HomeViewModel>() {
 
     override fun init() {
         super.init()
+        mViewModel.knowledgeId = knowledge.id
 
-        rv_home.adapter = adapter
+        rv_knowledge.adapter = adapter
 
-        refresh_layout.setColorSchemeColors(Color.GREEN, Color.BLUE)
-        refresh_layout.setOnRefreshListener {
+        knowledge_refresh.setColorSchemeColors(Color.GREEN, Color.BLUE)
+        knowledge_refresh.setOnRefreshListener {
             isRefreshFromPull = true
             mViewModel.refresh()
         }
@@ -35,12 +40,11 @@ class HomeFragment : BaseVMFragment<HomeViewModel>() {
     override fun startObserve() {
         super.startObserve()
         mViewModel.run {
-            pagedList.observe(this@HomeFragment, Observer {
+            pagedList.observe(this@KnowledgeFragment, Observer {
                 adapter.submitList(it)
             })
-
-            uiState.observe(this@HomeFragment, Observer { state->
-                refresh_layout.isRefreshing = state.loading
+            uiState.observe(this@KnowledgeFragment, Observer { state ->
+                knowledge_refresh.isRefreshing = state.loading
 
                 if (state.loading) {
                     if (isRefreshFromPull) {
@@ -71,5 +75,4 @@ class HomeFragment : BaseVMFragment<HomeViewModel>() {
     override fun retry() {
         mViewModel.refresh()
     }
-
 }

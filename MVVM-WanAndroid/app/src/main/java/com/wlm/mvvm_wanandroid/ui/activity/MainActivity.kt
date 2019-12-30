@@ -22,25 +22,25 @@ class MainActivity : BaseActivity() {
 
     private val bottomTitles = arrayOf(
         R.string.str_home,
-        R.string.str_we_chat,
-        R.string.str_project,
+        R.string.str_knowledge_tree,
         R.string.str_navigation,
-        R.string.str_knowledge_tree
+//        R.string.str_we_chat,
+        R.string.str_project
     )
 
     private val homeFragment by lazy { HomeFragment() }
-    private val weChatFragment by lazy { WeChatFragment() }
-    private val projectFragment by lazy { ProjectFragment() }
-    private val navigationItemView by lazy { NavigationFragment() }
     private val knowledgeTreeFragment by lazy { KnowledgeTreeFragment() }
+    private val navigationItemView by lazy { NavigationFragment() }
+//    private val weChatFragment by lazy { WeChatFragment() }
+    private val projectFragment by lazy { ProjectFragment() }
     private val fragmentList = arrayListOf<Fragment>()
 
     init {
         fragmentList.add(homeFragment)
-        fragmentList.add(weChatFragment)
-        fragmentList.add(projectFragment)
-        fragmentList.add(navigationItemView)
         fragmentList.add(knowledgeTreeFragment)
+        fragmentList.add(navigationItemView)
+//        fragmentList.add(weChatFragment)
+        fragmentList.add(projectFragment)
     }
 
     override fun init() {
@@ -136,10 +136,10 @@ class MainActivity : BaseActivity() {
             setOnNavigationItemSelectedListener {
                 when (it.itemId) {
                     R.id.home -> view_pager.currentItem = 0
-                    R.id.we_chat -> view_pager.currentItem = 1
-                    R.id.project -> view_pager.currentItem = 2
-                    R.id.navigation -> view_pager.currentItem = 3
-                    R.id.knowledge_tree -> view_pager.currentItem = 4
+                    R.id.knowledge_tree -> view_pager.currentItem = 1
+                    R.id.navigation -> view_pager.currentItem = 2
+                    R.id.project -> view_pager.currentItem = 3
+//                    R.id.we_chat -> view_pager.currentItem = 1
                 }
                 true
             }

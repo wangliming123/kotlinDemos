@@ -14,6 +14,7 @@ abstract class BaseVMFragment<VM : BaseViewModel> : BaseFragment() {
 
     override fun init() {
         initVM()
+        multipleStatusView = childMultipleStatusView()
         multipleStatusView?.setOnClickListener {
             when (multipleStatusView?.viewStatus) {
                 MultipleStatusView.STATUS_ERROR, MultipleStatusView.STATUS_EMPTY ->
@@ -22,6 +23,8 @@ abstract class BaseVMFragment<VM : BaseViewModel> : BaseFragment() {
         }
         startObserve()
     }
+
+    open fun childMultipleStatusView() : MultipleStatusView? = null
 
     open fun retry() {
 

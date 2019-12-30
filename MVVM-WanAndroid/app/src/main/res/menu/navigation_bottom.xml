@@ -4,19 +4,21 @@
         android:title="@string/str_home"
         android:icon="@drawable/ic_home"/>
 
-    <item android:id="@+id/we_chat"
-        android:title="@string/str_we_chat"
-        android:icon="@drawable/ic_we_chat"/>
-
-    <item android:id="@+id/project"
-        android:title="@string/str_project"
-        android:icon="@drawable/ic_project"/>
+    <item android:id="@+id/knowledge_tree"
+        android:title="@string/str_knowledge_tree"
+        android:icon="@drawable/ic_knowledge_tree"/>
 
     <item android:id="@+id/navigation"
         android:title="@string/str_navigation"
         android:icon="@drawable/ic_navigation"/>
 
-    <item android:id="@+id/knowledge_tree"
-        android:title="@string/str_knowledge_tree"
-        android:icon="@drawable/ic_knowledge_tree"/>
+<!--    <item android:id="@+id/we_chat"-->
+<!--        android:title="@string/str_we_chat"-->
+<!--        android:icon="@drawable/ic_we_chat"/>-->
+
+    <item android:id="@+id/project"
+        android:title="@string/str_project"
+        android:icon="@drawable/ic_project"/>
+
+
 </menu>
