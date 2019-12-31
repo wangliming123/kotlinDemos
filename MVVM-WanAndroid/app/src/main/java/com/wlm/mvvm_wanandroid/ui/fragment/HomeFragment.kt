@@ -16,8 +16,6 @@ class HomeFragment : BaseVMFragment<HomeViewModel>() {
 
     private val adapter by lazy { HomeAdapter() }
 
-    private var isRefreshFromPull = false
-
     override fun childMultipleStatusView(): MultipleStatusView? = multiple_status_view
 
     override fun init() {

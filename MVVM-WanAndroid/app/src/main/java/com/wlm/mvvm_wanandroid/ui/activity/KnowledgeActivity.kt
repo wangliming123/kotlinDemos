@@ -1,5 +1,6 @@
 package com.wlm.mvvm_wanandroid.ui.activity
 
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
 import com.google.android.material.tabs.TabLayout
@@ -50,7 +51,11 @@ class KnowledgeActivity : BaseActivity() {
                 override fun getCount(): Int = fragments.size
 
                 override fun getPageTitle(position: Int): CharSequence? =
-                    knowledge.children[position].name
+                    HtmlCompat.fromHtml(
+                        knowledge.children[position].name,
+                        HtmlCompat.FROM_HTML_MODE_LEGACY
+                    )
+
 
             }
         }

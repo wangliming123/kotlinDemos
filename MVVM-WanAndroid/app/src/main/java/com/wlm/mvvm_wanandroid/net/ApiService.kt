@@ -1,9 +1,7 @@
 package com.wlm.mvvm_wanandroid.net
 
 import com.wlm.mvvm_wanandroid.base.HttpResponse
-import com.wlm.mvvm_wanandroid.bean.ArticleList
-import com.wlm.mvvm_wanandroid.bean.BannerData
-import com.wlm.mvvm_wanandroid.bean.Knowledge
+import com.wlm.mvvm_wanandroid.bean.*
 import retrofit2.http.*
 
 
@@ -31,6 +29,9 @@ interface ApiService {
     @GET("banner/json")
     suspend fun getBanners(): HttpResponse<List<BannerData>>
 
+    @GET("article/top/json")
+    suspend fun getTop(): HttpResponse<List<Article>>
+
     @GET("tree/json")
     suspend fun getKnowledgeTree(): HttpResponse<List<Knowledge>>
 
@@ -39,6 +40,16 @@ interface ApiService {
         @Path("page") page: Int,
         @Query("cid") cid: Int
     ): HttpResponse<ArticleList>
+
+    @GET("navi/json")
+    suspend fun getNavigation() : HttpResponse<List<Navigation>>
+
+    @GET("project/tree/json")
+    suspend fun getProjectTree() : HttpResponse<List<Knowledge>>
+
+    ///page 页码，从1开始
+    @GET("project/list/{page}/json")
+    suspend fun getProjectItem(@Path("page") page : Int, @Query("cid") cid: Int): HttpResponse<ArticleList>
 //
 //    @POST("lg/collect/{id}/json")
 //    suspend fun collectArticle(@Path("id") id: Int): CustomResponse<ArticleList>

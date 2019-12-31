@@ -20,8 +20,6 @@ class KnowledgeFragment(private val knowledge: Knowledge) : BaseVMFragment<Knowl
 
     private val adapter by lazy { KnowledgeAdapter() }
 
-    private var isRefreshFromPull = false
-
     override fun childMultipleStatusView(): MultipleStatusView? = multiple_status_view
 
     override fun init() {

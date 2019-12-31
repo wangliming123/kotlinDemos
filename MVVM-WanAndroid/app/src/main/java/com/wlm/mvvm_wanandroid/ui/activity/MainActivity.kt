@@ -153,8 +153,8 @@ class MainActivity : BaseActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.scan -> {
-            }
+//            R.id.scan -> {
+//            }
             R.id.search -> {
                 ToastUtils.show("to be completed")
                 return true

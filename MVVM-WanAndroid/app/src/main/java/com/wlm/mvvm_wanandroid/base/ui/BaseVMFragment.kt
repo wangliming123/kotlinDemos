@@ -12,6 +12,8 @@ abstract class BaseVMFragment<VM : BaseViewModel> : BaseFragment() {
     abstract val providerVMClass: Class<VM>
     protected var multipleStatusView: MultipleStatusView? = null
 
+    protected var isRefreshFromPull = false
+
     override fun init() {
         initVM()
         multipleStatusView = childMultipleStatusView()

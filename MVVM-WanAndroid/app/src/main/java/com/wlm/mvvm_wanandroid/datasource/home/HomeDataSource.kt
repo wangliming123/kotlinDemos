@@ -28,17 +28,30 @@ class HomeDataSource(private val homeViewModel: HomeViewModel) :
 //                        val bannerResult = bannerJob.await()
 //                        val result = articleJob.await()
                         val result = homeRepository.getArticleList(page)
+                        val topResult = homeRepository.getTop()
                         val bannerResult = homeRepository.getBanners()
                         executeResponse(result, {
-                            page = result.data?.curPage!!
-                            //将banner数据放入article数据的的第一条(article.size + 1)
-                            executeResponse(bannerResult, {
-                                val article = result.data.datas[0].copy()
-                                article.bannerList = bannerResult.data
-                                result.data.datas.add(0, article)
-                            }, {})
-                            homeViewModel.uiState.value = UiState(false, null, result.data)
-                            callback.onResult(result.data.datas)
+                            result.data?.let { articleList ->
+                                page = articleList.curPage
+
+                                executeResponse(topResult, {
+                                    topResult.data?.let {
+                                        it.forEach { top ->
+                                            top.isTop = true
+                                        }
+                                        articleList.datas.addAll(0, it)
+                                    }
+                                }, {})
+                                //将banner数据放入article数据的的第一条(article.size + 1)
+                                executeResponse(bannerResult, {
+                                    val article = articleList.datas[0].copy()
+                                    article.bannerList = bannerResult.data
+                                    articleList.datas.add(0, article)
+                                }, {})
+                                homeViewModel.uiState.value = UiState(false, null, result.data)
+                                callback.onResult(result.data.datas)
+                            }
+
                         }, { msg ->
                             homeViewModel.uiState.value = UiState(false, msg, null)
                         })

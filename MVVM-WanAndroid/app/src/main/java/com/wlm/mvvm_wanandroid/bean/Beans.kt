@@ -1,6 +1,7 @@
 package com.wlm.mvvm_wanandroid.bean
 
-import androidx.room.PrimaryKey
+import java.io.Serializable
+
 
 data class ArticleList(
     val curPage: Int,
@@ -21,9 +22,8 @@ data class Article(
     val collect: Boolean,
     val courseId: Int,
     val desc: String?,
-    val envelopePic: String,
+    val envelopePic: String?,
     val fresh: Boolean,
-    @PrimaryKey
     val id: Int,
     val link: String,
     val niceDate: String,
@@ -43,5 +43,36 @@ data class Article(
     val userId: Int,
     val visible: Int,
     val zan: Int,
+    var isTop: Boolean = false,
     var bannerList: List<BannerData>?
 )
+
+data class BannerData(
+    val desc: String,
+    val id: Int,
+    val imagePath: String,
+    val isVisible: Int,
+    val order: Int,
+    val title: String,
+    val type: Int,
+    val url: String
+)
+
+data class Knowledge(
+    val children: List<Knowledge>,
+    val courseId: Int,
+    val id: Int,
+    val name: String,
+    val order: Int,
+    val parentChapterId: Int,
+    val userControlSetTop: Boolean,
+    val visible: Int
+): Serializable
+
+data class Navigation(
+    val articles: List<Article>,
+    val cid: Int,
+    val name: String
+)
+
+

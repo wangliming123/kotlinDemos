@@ -15,8 +15,6 @@ class KnowledgeTreeFragment : BaseVMFragment<KnowledgeTreeViewModel>() {
 
     override val providerVMClass: Class<KnowledgeTreeViewModel> = KnowledgeTreeViewModel::class.java
 
-    private var isRefreshFromPull = false
-
     private val adapter by lazy { KnowledgeTreeAdapter() }
 
     override fun childMultipleStatusView(): MultipleStatusView? = multiple_status_view

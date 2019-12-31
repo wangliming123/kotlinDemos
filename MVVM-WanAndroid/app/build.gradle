@@ -14,7 +14,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.1"
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary true
@@ -85,4 +85,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
 
     implementation 'com.classic.common:multiple-status-view:1.6'
+
+    implementation 'com.hyman:flowlayout-lib:1.1.2'
 }

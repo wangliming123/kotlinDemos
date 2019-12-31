@@ -38,4 +38,8 @@ class HomeRepository(private val homeViewModel: HomeViewModel) : BaseRepository(
     suspend fun getBanners(): HttpResponse<List<BannerData>> {
         return withContext(Dispatchers.IO) { apiCall { RetrofitManager.service.getBanners() } }
     }
+
+    suspend fun getTop(): HttpResponse<List<Article>> {
+        return withContext(Dispatchers.IO) { apiCall { RetrofitManager.service.getTop() } }
+    }
 }
