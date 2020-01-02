@@ -27,13 +27,12 @@ class ProjectFragment : BaseVMFragment<ProjectViewModel>() {
 
         mViewModel.getProjectTree()
 
-        initTabLayout()
     }
 
     private fun initViewPager(projects: List<Knowledge>) {
         fragments.clear()
         projects.forEach {
-            fragments.add(KnowledgeFragment(it))
+            fragments.add(KnowledgeFragment(it, KnowledgeFragment.TYPE_PROJECT))
         }
         project_view_pager.adapter = object : FragmentPagerAdapter(
             childFragmentManager,

@@ -7,10 +7,12 @@ import com.wlm.mvvm_wanandroid.base.UiState
 import com.wlm.mvvm_wanandroid.bean.Article
 import com.wlm.mvvm_wanandroid.bean.ArticleList
 import com.wlm.mvvm_wanandroid.repository.KnowledgeRepository
+import com.wlm.mvvm_wanandroid.ui.fragment.KnowledgeFragment
 
 class KnowledgeViewModel : BaseViewModel() {
 
     var knowledgeId : Int = 0
+    var type : Int = KnowledgeFragment.TYPE_KNOWLEDGE
 
     val repository by lazy { KnowledgeRepository(this) }
 

@@ -22,10 +22,10 @@ class KnowledgeTreeFragment : BaseVMFragment<KnowledgeTreeViewModel>() {
     override fun init() {
         super.init()
 
-        rv_knowledge.adapter = adapter
+        rv_refresh.adapter = adapter
 
-        knowledge_refresh.setColorSchemeColors(Color.GREEN, Color.BLUE)
-        knowledge_refresh.setOnRefreshListener {
+        layout_refresh.setColorSchemeColors(Color.GREEN, Color.BLUE)
+        layout_refresh.setOnRefreshListener {
             isRefreshFromPull = true
             mViewModel.refresh()
         }
@@ -39,7 +39,7 @@ class KnowledgeTreeFragment : BaseVMFragment<KnowledgeTreeViewModel>() {
             })
 
             uiState.observe(this@KnowledgeTreeFragment, Observer { state->
-                knowledge_refresh.isRefreshing = state.loading
+                layout_refresh.isRefreshing = state.loading
 
                 if (state.loading) {
                     if (isRefreshFromPull) {

@@ -20,6 +20,7 @@
     <color name="color_top">#e24234</color>
     <color name="color_bg">#f3f4f5</color>
     <color name="divider">#e2e2e2</color>
+    <color name="dark_grey">#a7a7a7</color>
 
 
 </resources>

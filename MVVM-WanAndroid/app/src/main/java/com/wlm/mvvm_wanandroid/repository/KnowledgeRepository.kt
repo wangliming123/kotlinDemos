@@ -30,7 +30,18 @@ class KnowledgeRepository(private val viewModel: KnowledgeViewModel) : BaseRepos
 
     suspend fun searchArticles(page: Int, knowledgeId: Int): HttpResponse<ArticleList> {
         return withContext(Dispatchers.IO) {
-            RetrofitManager.service.searchArticles(page, knowledgeId)
+            RetrofitManager.service.getKnowledgeItem(page, knowledgeId)
+        }
+    }
+    suspend fun getProjectItem(page: Int, knowledgeId: Int): HttpResponse<ArticleList> {
+        return withContext(Dispatchers.IO) {
+            RetrofitManager.service.getProjectItem(page, knowledgeId)
+        }
+    }
+
+    suspend fun getWxArticles(page: Int, knowledgeId: Int): HttpResponse<ArticleList> {
+        return withContext(Dispatchers.IO) {
+            RetrofitManager.service.getWxArticles(knowledgeId, page)
         }
     }
 }

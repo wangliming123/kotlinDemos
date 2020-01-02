@@ -5,7 +5,7 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.wlm.mvvm_wanandroid.bean.Article
 
-class KnowledgeAdapter : PagedListAdapter<Article, ArticleViewHolder>(diffCallback){
+class DefaultArticleAdapter : PagedListAdapter<Article, ArticleViewHolder>(diffCallback){
     companion object {
 
         private val diffCallback = object : DiffUtil.ItemCallback<Article>() {

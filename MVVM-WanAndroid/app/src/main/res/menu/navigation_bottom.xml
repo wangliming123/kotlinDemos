@@ -12,13 +12,11 @@
         android:title="@string/str_navigation"
         android:icon="@drawable/ic_navigation"/>
 
-<!--    <item android:id="@+id/we_chat"-->
-<!--        android:title="@string/str_we_chat"-->
-<!--        android:icon="@drawable/ic_we_chat"/>-->
-
     <item android:id="@+id/project"
         android:title="@string/str_project"
         android:icon="@drawable/ic_project"/>
 
-
+        <item android:id="@+id/wx_article"
+            android:title="@string/str_wx_article"
+            android:icon="@drawable/ic_we_chat"/>
 </menu>

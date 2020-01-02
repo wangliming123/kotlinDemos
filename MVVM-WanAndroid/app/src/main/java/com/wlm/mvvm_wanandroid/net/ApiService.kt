@@ -23,6 +23,7 @@ interface ApiService {
 //                 @Field("password") password: String,
 //                 @Field("repassword") rePassword: String): CustomResponse<User>
 
+    ///page 页码，从1开始
     @GET("article/list/{page}/json")
     suspend fun getArticles(@Path("page") page: Int): HttpResponse<ArticleList>
 
@@ -35,22 +36,45 @@ interface ApiService {
     @GET("tree/json")
     suspend fun getKnowledgeTree(): HttpResponse<List<Knowledge>>
 
+    ///page 页码，从0开始
     @GET("article/list/{page}/json")
-    suspend fun searchArticles(
+    suspend fun getKnowledgeItem(
         @Path("page") page: Int,
         @Query("cid") cid: Int
     ): HttpResponse<ArticleList>
 
     @GET("navi/json")
-    suspend fun getNavigation() : HttpResponse<List<Navigation>>
+    suspend fun getNavigation(): HttpResponse<List<Navigation>>
 
     @GET("project/tree/json")
-    suspend fun getProjectTree() : HttpResponse<List<Knowledge>>
+    suspend fun getProjectTree(): HttpResponse<List<Knowledge>>
 
     ///page 页码，从1开始
     @GET("project/list/{page}/json")
-    suspend fun getProjectItem(@Path("page") page : Int, @Query("cid") cid: Int): HttpResponse<ArticleList>
-//
+    suspend fun getProjectItem(
+        @Path("page") page: Int,
+        @Query("cid") cid: Int
+    ): HttpResponse<ArticleList>
+
+    @GET("hotkey/json")
+    suspend fun getHotKey(): HttpResponse<List<HotKey>>
+
+    ///page 页码，从0开始
+    @POST("article/query/{page}/json")
+    suspend fun queryArticles(
+        @Path("page") page: Int,
+        @Query("k") queryKey: String
+    ): HttpResponse<ArticleList>
+
+    @GET("wxarticle/chapters/json")
+    suspend fun getWxList(): HttpResponse<List<Knowledge>>
+
+    ///page 页码，从1开始
+    @GET("wxarticle/list/{id}/{page}/json")
+    suspend fun getWxArticles(
+        @Path("id") id: Int,
+        @Path("page") page: Int
+    ): HttpResponse<ArticleList>
 //    @POST("lg/collect/{id}/json")
 //    suspend fun collectArticle(@Path("id") id: Int): CustomResponse<ArticleList>
 //

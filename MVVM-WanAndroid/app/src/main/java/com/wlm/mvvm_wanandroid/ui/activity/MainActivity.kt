@@ -12,6 +12,7 @@ import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import com.wlm.mvvm_wanandroid.R
 import com.wlm.mvvm_wanandroid.base.ui.BaseActivity
+import com.wlm.mvvm_wanandroid.startKtxActivity
 import com.wlm.mvvm_wanandroid.ui.fragment.*
 import com.wlm.mvvm_wanandroid.utils.ToastUtils
 import kotlinx.android.synthetic.main.activity_main.*
@@ -24,23 +25,23 @@ class MainActivity : BaseActivity() {
         R.string.str_home,
         R.string.str_knowledge_tree,
         R.string.str_navigation,
-//        R.string.str_we_chat,
-        R.string.str_project
+        R.string.str_project,
+        R.string.str_wx_article
     )
 
     private val homeFragment by lazy { HomeFragment() }
     private val knowledgeTreeFragment by lazy { KnowledgeTreeFragment() }
     private val navigationItemView by lazy { NavigationFragment() }
-//    private val weChatFragment by lazy { WeChatFragment() }
     private val projectFragment by lazy { ProjectFragment() }
     private val fragmentList = arrayListOf<Fragment>()
+    private val wxArticleFragment by lazy { WxArticleFragment() }
 
     init {
         fragmentList.add(homeFragment)
         fragmentList.add(knowledgeTreeFragment)
         fragmentList.add(navigationItemView)
-//        fragmentList.add(weChatFragment)
         fragmentList.add(projectFragment)
+        fragmentList.add(wxArticleFragment)
     }
 
     override fun init() {
@@ -139,7 +140,7 @@ class MainActivity : BaseActivity() {
                     R.id.knowledge_tree -> view_pager.currentItem = 1
                     R.id.navigation -> view_pager.currentItem = 2
                     R.id.project -> view_pager.currentItem = 3
-//                    R.id.we_chat -> view_pager.currentItem = 1
+                    R.id.wx_article -> view_pager.currentItem = 5
                 }
                 true
             }
@@ -156,7 +157,7 @@ class MainActivity : BaseActivity() {
 //            R.id.scan -> {
 //            }
             R.id.search -> {
-                ToastUtils.show("to be completed")
+                startKtxActivity<SearchActivity>()
                 return true
             }
         }

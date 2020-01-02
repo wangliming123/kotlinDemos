@@ -12,11 +12,12 @@ class HomeDataSource(private val homeViewModel: HomeViewModel) :
     ItemKeyedDataSource<Int, Article>() {
 
     private var page = 0
+    private var pageCount = 0
     override fun loadInitial(
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<Article>
     ) {
-        homeViewModel.apply {
+        homeViewModel.run {
             viewModelScope.launch {
                 uiState.value = UiState(true, null, null)
                 tryCatch(
@@ -32,7 +33,8 @@ class HomeDataSource(private val homeViewModel: HomeViewModel) :
                         val bannerResult = homeRepository.getBanners()
                         executeResponse(result, {
                             result.data?.let { articleList ->
-                                page = articleList.curPage
+                                pageCount = articleList.pageCount
+                                page++
 
                                 executeResponse(topResult, {
                                     topResult.data?.let {
@@ -66,13 +68,16 @@ class HomeDataSource(private val homeViewModel: HomeViewModel) :
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Article>) {
+        if (page > pageCount) return
         homeViewModel.run {
             viewModelScope.launch {
                 tryCatch({
                     val result = homeRepository.getArticleList(page)
                     executeResponse(result, {
-                        page = result.data?.curPage!!
-                        callback.onResult(result.data.datas)
+                        result.data?.let {
+                            page++
+                            callback.onResult(result.data.datas)
+                        }
                     }, {})
                 }, handleCancellationExceptionManually = true)
             }

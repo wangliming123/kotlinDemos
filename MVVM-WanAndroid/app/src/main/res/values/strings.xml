@@ -2,7 +2,7 @@
     <string name="app_name">WanAndroid</string>
 
     <string name="str_home">首页</string>
-    <string name="str_we_chat">公众号</string>
+    <string name="str_wx_article">公众号</string>
     <string name="str_project">项目</string>
     <string name="str_navigation">导航</string>
     <string name="str_knowledge_tree">体系</string>
@@ -25,5 +25,6 @@
     <string name="no_data">暂无数据 o(╥﹏╥)o \n 点击屏幕重新加载</string>
     <string name="error_loading">加载失败 o(╥﹏╥)o \n 点击屏幕重新加载</string>
     <string name="str_top">置顶</string>
+    <string name="str_search_hot_key">搜索热词</string>
 
 </resources>
