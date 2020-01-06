@@ -10,7 +10,7 @@ import com.orhanobut.logger.Logger
 import com.wlm.mvvm_wanandroid.R
 import com.wlm.mvvm_wanandroid.adapter.DefaultArticleAdapter
 import com.wlm.mvvm_wanandroid.base.ui.BaseVMActivity
-import com.wlm.mvvm_wanandroid.bean.HotKey
+import com.wlm.mvvm_wanandroid.common.HotKey
 import com.wlm.mvvm_wanandroid.viewmodel.SearchViewModel
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
@@ -36,7 +36,7 @@ class SearchActivity : BaseVMActivity<SearchViewModel>() {
 
         rv_refresh.adapter = adapter
 
-        layout_refresh.setColorSchemeColors(Color.BLUE, Color.GREEN)
+        layout_refresh.setColorSchemeColors(Color.GREEN, Color.BLUE)
         layout_refresh.setOnRefreshListener {
             isRefreshFromPull = true
             mViewModel.refresh()

@@ -1,4 +1,4 @@
-package com.wlm.mvvm_wanandroid.utils
+package com.wlm.mvvm_wanandroid.common.utils
 
 import android.content.Context
 import com.wlm.mvvm_wanandroid.MyApp

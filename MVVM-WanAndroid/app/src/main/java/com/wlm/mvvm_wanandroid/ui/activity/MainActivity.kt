@@ -11,15 +11,21 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import com.wlm.mvvm_wanandroid.R
-import com.wlm.mvvm_wanandroid.base.ui.BaseActivity
+import com.wlm.mvvm_wanandroid.base.ui.BaseVMActivity
+import com.wlm.mvvm_wanandroid.common.Constant
+import com.wlm.mvvm_wanandroid.common.utils.SharedPrefs
 import com.wlm.mvvm_wanandroid.startKtxActivity
 import com.wlm.mvvm_wanandroid.ui.fragment.*
-import com.wlm.mvvm_wanandroid.utils.ToastUtils
+import com.wlm.mvvm_wanandroid.common.utils.ToastUtils
+import com.wlm.mvvm_wanandroid.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseVMActivity<MainViewModel>() {
     override val layoutId: Int = R.layout.activity_main
+    override val providerVMClass: Class<MainViewModel> = MainViewModel::class.java
+
+    private var isLogin by SharedPrefs(Constant.IS_LOGIN, false)
 
     private val bottomTitles = arrayOf(
         R.string.str_home,
@@ -45,6 +51,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun init() {
+        super.init()
         setSupportActionBar(toolbar)
         initDrawerLayout()
         initNav()
@@ -63,7 +70,7 @@ class MainActivity : BaseActivity() {
             ) {
                 override fun onDrawerOpened(drawerView: View) {
                     super.onDrawerOpened(drawerView)
-                    nav_view.menu.findItem(R.id.logout).isVisible = false
+                    nav_view.menu.findItem(R.id.logout).isVisible = isLogin
                 }
             }
             addDrawerListener(toggle)
@@ -73,19 +80,26 @@ class MainActivity : BaseActivity() {
 
     private fun initNav() {
         nav_view.setNavigationItemSelectedListener {
-            ToastUtils.show(it.title.toString())
             when (it.itemId) {
                 R.id.favorites -> {
+                    if (isLogin) {
+                        startKtxActivity<CollectActivity>()
+                    } else {
+                        startKtxActivity<LoginActivity>()
+                    }
                 }
                 R.id.todo -> {
+                    ToastUtils.show(it.title.toString())
                 }
-                R.id.night_mode -> {
-                }
-                R.id.setting -> {
-                }
+//                R.id.night_mode -> {
+//                }
+//                R.id.setting -> {
+//                }
                 R.id.logout -> {
+                    mViewModel.logout()
                 }
                 R.id.about -> {
+                    ToastUtils.show(it.title.toString())
                 }
             }
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -179,5 +193,12 @@ class MainActivity : BaseActivity() {
             }
         }
         return super.onKeyDown(keyCode, event)
+    }
+
+    override fun startObserve() {
+        super.startObserve()
+        mViewModel.run {
+
+        }
     }
 }

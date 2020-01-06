@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.wlm.mvvm_wanandroid.base.BaseViewModel
 import com.wlm.mvvm_wanandroid.base.UiState
-import com.wlm.mvvm_wanandroid.bean.Knowledge
+import com.wlm.mvvm_wanandroid.common.Knowledge
 import com.wlm.mvvm_wanandroid.repository.KnowledgeTreeRepository
 
 class KnowledgeTreeViewModel : BaseViewModel() {

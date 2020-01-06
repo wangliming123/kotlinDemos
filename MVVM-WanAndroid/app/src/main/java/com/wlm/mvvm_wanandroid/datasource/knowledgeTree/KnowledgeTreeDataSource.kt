@@ -3,7 +3,7 @@ package com.wlm.mvvm_wanandroid.datasource.knowledgeTree
 import androidx.lifecycle.viewModelScope
 import androidx.paging.ItemKeyedDataSource
 import com.wlm.mvvm_wanandroid.base.UiState
-import com.wlm.mvvm_wanandroid.bean.Knowledge
+import com.wlm.mvvm_wanandroid.common.Knowledge
 import com.wlm.mvvm_wanandroid.executeResponse
 import com.wlm.mvvm_wanandroid.viewmodel.KnowledgeTreeViewModel
 import kotlinx.coroutines.launch

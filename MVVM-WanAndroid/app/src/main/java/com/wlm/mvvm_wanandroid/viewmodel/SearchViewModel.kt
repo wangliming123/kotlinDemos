@@ -5,8 +5,8 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.wlm.mvvm_wanandroid.base.BaseViewModel
 import com.wlm.mvvm_wanandroid.base.UiState
-import com.wlm.mvvm_wanandroid.bean.ArticleList
-import com.wlm.mvvm_wanandroid.bean.HotKey
+import com.wlm.mvvm_wanandroid.common.ArticleList
+import com.wlm.mvvm_wanandroid.common.HotKey
 import com.wlm.mvvm_wanandroid.executeResponse
 import com.wlm.mvvm_wanandroid.repository.SearchRepository
 import kotlinx.coroutines.launch

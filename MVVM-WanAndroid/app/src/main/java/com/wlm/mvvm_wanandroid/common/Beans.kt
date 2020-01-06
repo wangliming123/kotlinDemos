@@ -1,4 +1,4 @@
-package com.wlm.mvvm_wanandroid.bean
+package com.wlm.mvvm_wanandroid.common
 
 import java.io.Serializable
 
@@ -19,7 +19,7 @@ data class Article(
     val author: String,
     val chapterId: Int,
     val chapterName: String,
-    val collect: Boolean,
+    var collect: Boolean,
     val courseId: Int,
     val desc: String?,
     val envelopePic: String?,
@@ -29,6 +29,7 @@ data class Article(
     val niceDate: String,
     val niceShareDate: String,
     val origin: String,
+    val originId: Int,
     val prefix: String,
     val projectLink: String,
     val publishTime: Long,
@@ -36,7 +37,7 @@ data class Article(
     val shareDate: Long,
     val shareUser: String,
     val superChapterId: Int,
-    val superChapterName: String,
+    val superChapterName: String?,
     val tags: List<Any>,
     val title: String,
     val type: Int,
@@ -83,4 +84,18 @@ data class HotKey(
     val visible: Int
 )
 
+data class User(
+    val admin: Boolean,
+    val chapterTops: List<Any>,
+    val collectIds: List<Any>,
+    val email: String,
+    val icon: String,
+    val id: Int,
+    val nickname: String,
+    val password: String,
+    val publicName: String,
+    val token: String,
+    val type: Int,
+    val username: String
+)
 

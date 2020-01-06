@@ -8,7 +8,7 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.wlm.mvvm_wanandroid.R
-import com.wlm.mvvm_wanandroid.bean.Navigation
+import com.wlm.mvvm_wanandroid.common.Navigation
 
 class NavigationAdapter(private val listener: OnItemClickListener) :
     PagedListAdapter<Navigation, NavigationViewHolder>(diffCallback) {
@@ -35,18 +35,17 @@ class NavigationAdapter(private val listener: OnItemClickListener) :
 
     override fun onBindViewHolder(holder: NavigationViewHolder, position: Int) {
         holder.bind(getItem(position))
-        holder.itemView.run {
-            setOnClickListener {
-                setChecked(position)
-                listener.onItemClicked(position)
-            }
-            setBackgroundColor(
-                ContextCompat.getColor(
-                    context,
-                    if (positionChecked == position) R.color.colorPrimaryLight else R.color.white
-                )
-            )
+
+        holder.itemView.setOnClickListener {
+            setChecked(position)
+            listener.onItemClicked(position)
         }
+        holder.tvNavigation.setTextColor(
+            ContextCompat.getColor(
+                holder.itemView.context,
+                if (positionChecked == position) R.color.colorPrimary else R.color.textColorSecondary
+            )
+        )
     }
 
     fun setChecked(position: Int) {
@@ -60,7 +59,7 @@ class NavigationAdapter(private val listener: OnItemClickListener) :
 class NavigationViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
     LayoutInflater.from(parent.context).inflate(R.layout.item_navigation, parent, false)
 ) {
-    private val tvNavigation = itemView.findViewById<TextView>(R.id.tv_navigation)
+    val tvNavigation: TextView = itemView.findViewById(R.id.tv_navigation)
     fun bind(navigation: Navigation?) {
         tvNavigation.text = navigation?.name
     }

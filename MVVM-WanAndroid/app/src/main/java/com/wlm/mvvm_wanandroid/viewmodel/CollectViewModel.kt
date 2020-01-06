@@ -9,21 +9,16 @@ import com.wlm.mvvm_wanandroid.base.UiState
 import com.wlm.mvvm_wanandroid.common.ArticleList
 import com.wlm.mvvm_wanandroid.executeResponse
 import com.wlm.mvvm_wanandroid.repository.CollectRepository
-import com.wlm.mvvm_wanandroid.repository.KnowledgeRepository
-import com.wlm.mvvm_wanandroid.ui.fragment.KnowledgeFragment
 import kotlinx.coroutines.launch
 
-class KnowledgeViewModel : BaseViewModel() {
+class CollectViewModel : BaseViewModel() {
 
-    var knowledgeId : Int = 0
-    var type : Int = KnowledgeFragment.TYPE_KNOWLEDGE
-    private val collectRepository by lazy { CollectRepository() }
-
-    val repository by lazy { KnowledgeRepository(this) }
+    val collectRepository by lazy { CollectRepository(this) }
 
     private val pageSize = MutableLiveData<Int>()
+
     private val listing = Transformations.map(pageSize) {
-        repository.getList(it)
+        collectRepository.getListing(it)!!
     }
 
     val pagedList = Transformations.switchMap(listing) {
@@ -32,30 +27,14 @@ class KnowledgeViewModel : BaseViewModel() {
 
     val uiState = MutableLiveData<UiState<ArticleList>>()
 
-    fun refresh() {
-        listing.value?.refresh?.invoke()
-    }
+    val unCollectId = MutableLiveData<Int>()
 
     fun initLoad(pageSize: Int = 10) {
         if (this.pageSize.value != pageSize) this.pageSize.value = pageSize
     }
 
-    fun collect(id: Int) {
-        viewModelScope.launch {
-            tryCatch(
-                tryBlock = {
-                    val result = collectRepository.collect(id)
-                    executeResponse(result, {
-                        Logger.d(result.toString())
-                    }, {
-                        Logger.d(result.toString())
-                    })
-                },
-                catchBlock = { t ->
-                    Logger.d(t.message)
-                }
-            )
-        }
+    fun refresh() {
+        listing.value?.refresh?.invoke()
     }
 
     fun unCollect(id: Int) {
@@ -65,6 +44,7 @@ class KnowledgeViewModel : BaseViewModel() {
                     val result = collectRepository.unCollect(id)
                     executeResponse(result, {
                         Logger.d(result.toString())
+                        unCollectId.value = id
                     }, {
                         Logger.d(result.toString())
                     })

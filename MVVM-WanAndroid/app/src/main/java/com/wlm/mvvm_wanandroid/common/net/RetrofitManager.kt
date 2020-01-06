@@ -1,11 +1,8 @@
-package com.wlm.mvvm_wanandroid.net
+package com.wlm.mvvm_wanandroid.common.net
 
 import com.wlm.mvvm_wanandroid.MyApp
-import com.wlm.mvvm_wanandroid.utils.AppUtils
-import com.wlm.mvvm_wanandroid.utils.SharedPrefs
-import okhttp3.Cache
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
+import com.wlm.mvvm_wanandroid.common.utils.SharedPrefs
+import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -42,8 +39,10 @@ object RetrofitManager {
         val cache = Cache(cacheFile, 1024 * 1024 * 50)//50Mb 缓存的大小
 
         return OkHttpClient.Builder()
-            .addInterceptor(addQueryParameterInterceptor()) //参数添加
+//            .addInterceptor(addQueryParameterInterceptor()) //参数添加
             .addInterceptor(addHeaderInterceptor()) //token过滤
+            .addInterceptor(receivedCookieInterceptor()) //持久化cookie
+            .addInterceptor(addCookieInterceptor()) //持久化cookie
             .addInterceptor(httpLoggingInterceptor)//日志,所有的请求响应度看到
             .cache(cache) //添加缓存
             .connectTimeout(60L, TimeUnit.SECONDS)
@@ -52,18 +51,49 @@ object RetrofitManager {
             .build()
     }
 
-    private fun addQueryParameterInterceptor(): Interceptor {
+    private var cookie by SharedPrefs("cookie", "")
+    private fun receivedCookieInterceptor(): Interceptor {
         return Interceptor { chain ->
-            val originalRequest = chain.request()
-            val modifiedUrl = originalRequest.url.newBuilder()
-                // Provide your custom parameter here
-                .addQueryParameter("udid", "d2807c895f0348a180148c9dfa6f2feeac0781b5")
-                .addQueryParameter("deviceModel", AppUtils.getMobileModel())
-                .build()
-            val request = originalRequest.newBuilder().url(modifiedUrl).build()
+            val response = chain.proceed(chain.request())
+            if (response.headers("Set-Cookie").isNotEmpty()) {
+                val sb = StringBuilder()
+                response.headers("Set-Cookie").forEach {
+                    sb.append("$it,")
+                }
+                cookie = sb.toString()
+            }
+            response
+        }
+    }
+
+    private fun addCookieInterceptor(): Interceptor {
+        return Interceptor { chain ->
+            val originRequest = chain.request()
+            val requestBuilder = originRequest.newBuilder()
+                .method(originRequest.method, originRequest.body)
+            val cookies = cookie.split(",")
+            cookies.forEach {
+                if (it.isNotEmpty()) {
+                    requestBuilder.addHeader("Cookie", it)
+                }
+            }
+            val request = requestBuilder.build()
             chain.proceed(request)
         }
     }
+
+//    private fun addQueryParameterInterceptor(): Interceptor {
+//        return Interceptor { chain ->
+//            val originalRequest = chain.request()
+//            val modifiedUrl = originalRequest.url.newBuilder()
+//                // Provide your custom parameter here
+//                .addQueryParameter("udid", "d2807c895f0348a180148c9dfa6f2feeac0781b5")
+//                .addQueryParameter("deviceModel", AppUtils.getMobileModel())
+//                .build()
+//            val request = originalRequest.newBuilder().url(modifiedUrl).build()
+//            chain.proceed(request)
+//        }
+//    }
 
     private val token: String by SharedPrefs("token", "")
 

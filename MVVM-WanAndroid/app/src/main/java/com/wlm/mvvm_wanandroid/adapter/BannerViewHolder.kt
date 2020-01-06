@@ -7,7 +7,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.wlm.mvvm_wanandroid.R
-import com.wlm.mvvm_wanandroid.bean.BannerData
+import com.wlm.mvvm_wanandroid.common.BannerData
 import com.wlm.mvvm_wanandroid.startKtxActivity
 import com.wlm.mvvm_wanandroid.ui.activity.BrowserActivity
 import com.youth.banner.Banner

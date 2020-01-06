@@ -1,7 +1,7 @@
-package com.wlm.mvvm_wanandroid.net
+package com.wlm.mvvm_wanandroid.common.net
 
 import com.wlm.mvvm_wanandroid.base.HttpResponse
-import com.wlm.mvvm_wanandroid.bean.*
+import com.wlm.mvvm_wanandroid.common.*
 import retrofit2.http.*
 
 
@@ -12,16 +12,6 @@ interface ApiService {
 //        const val TOOL_URL = "http://www.wanandroid.com/tools"
     }
 
-//    @FormUrlEncoded
-//    @POST("user/login")
-//    suspend fun login(@Field("username") username: String,
-//              @Field("password") password: String): HttpResponse<User>
-//
-//    @FormUrlEncoded
-//    @POST("user/register")
-//    suspend fun register(@Field("username") username: String,
-//                 @Field("password") password: String,
-//                 @Field("repassword") rePassword: String): CustomResponse<User>
 
     ///page 页码，从1开始
     @GET("article/list/{page}/json")
@@ -75,14 +65,43 @@ interface ApiService {
         @Path("id") id: Int,
         @Path("page") page: Int
     ): HttpResponse<ArticleList>
+
+
+    @FormUrlEncoded
+    @POST("user/login")
+    suspend fun login(@Field("username") username: String,
+              @Field("password") password: String): HttpResponse<User>
+
+
+    @FormUrlEncoded
+    @POST("user/register")
+    suspend fun register(@Field("username") username: String,
+                 @Field("password") password: String,
+                 @Field("repassword") rePassword: String): HttpResponse<User>
+
+
+    @GET("user/logout/json")
+    suspend fun logout() : HttpResponse<Any>
+
+    @POST("lg/collect/{id}/json")
+    suspend fun collect(@Path("id") id: Int): HttpResponse<Any>
+
+
+    @POST("lg/uncollect_originId/{origin_id}/json")
+    suspend fun unCollect(@Path("origin_id") id: Int): HttpResponse<Any>
+
+    @GET("lg/collect/list/{page}/json")
+    suspend fun getCollectArticles(@Path("page") page: Int): HttpResponse<ArticleList>
+
+//    @POST("lg/uncollect/{id}/json")
+//    suspend fun unCollectById(@Path("id") id: Int): HttpResponse<Any>
+
 //    @POST("lg/collect/{id}/json")
 //    suspend fun collectArticle(@Path("id") id: Int): CustomResponse<ArticleList>
 //
 //    @POST("lg/uncollect_originId/{id}/json")
 //    suspend fun unCollectArticle(@Path("id") id: Int): CustomResponse<ArticleList>
 //
-//    @GET("user/logout/json")
-//    suspend fun logout() : CustomResponse<Any>
 //
 //    @GET("user_article/list/{page}/json")
 //    suspend fun getSquareArticleList(@Path("page") page: Int): CustomResponse<ArticleList>

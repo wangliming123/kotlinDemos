@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import com.wlm.mvvm_wanandroid.R
 import com.wlm.mvvm_wanandroid.base.ui.BaseActivity
-import com.wlm.mvvm_wanandroid.bean.Knowledge
+import com.wlm.mvvm_wanandroid.common.Knowledge
 import com.wlm.mvvm_wanandroid.ui.fragment.KnowledgeFragment
 import kotlinx.android.synthetic.main.activity_knowledge.*
 import kotlinx.android.synthetic.main.layout_toolbar.*

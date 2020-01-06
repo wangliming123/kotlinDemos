@@ -1,14 +1,13 @@
 package com.wlm.mvvm_wanandroid.repository
 
-import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.wlm.mvvm_wanandroid.base.BaseRepository
 import com.wlm.mvvm_wanandroid.base.HttpResponse
 import com.wlm.mvvm_wanandroid.base.paging.Listing
-import com.wlm.mvvm_wanandroid.bean.Knowledge
+import com.wlm.mvvm_wanandroid.common.Knowledge
 import com.wlm.mvvm_wanandroid.datasource.knowledgeTree.KnowledgeTreeDataSourceFactory
-import com.wlm.mvvm_wanandroid.net.RetrofitManager
+import com.wlm.mvvm_wanandroid.common.net.RetrofitManager
 import com.wlm.mvvm_wanandroid.viewmodel.KnowledgeTreeViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.wlm.mvvm_wanandroid.base.BaseViewModel
 import com.wlm.mvvm_wanandroid.base.UiState
-import com.wlm.mvvm_wanandroid.bean.Navigation
+import com.wlm.mvvm_wanandroid.common.Navigation
 import com.wlm.mvvm_wanandroid.repository.NavigationRepository
 
 class NavigationViewModel : BaseViewModel() {

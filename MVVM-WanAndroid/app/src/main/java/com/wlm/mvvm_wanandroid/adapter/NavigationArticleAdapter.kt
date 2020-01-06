@@ -8,8 +8,8 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.wlm.mvvm_wanandroid.R
-import com.wlm.mvvm_wanandroid.bean.Article
-import com.wlm.mvvm_wanandroid.bean.Navigation
+import com.wlm.mvvm_wanandroid.common.Article
+import com.wlm.mvvm_wanandroid.common.Navigation
 import com.wlm.mvvm_wanandroid.startKtxActivity
 import com.wlm.mvvm_wanandroid.ui.activity.BrowserActivity
 import com.zhy.view.flowlayout.FlowLayout
@@ -61,7 +61,7 @@ class NavigationArticleViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
 
                 }
 
-                setOnTagClickListener { view, position, parent ->
+                setOnTagClickListener { _, position, parent ->
                     val article = articles[position]
                     parent.context.startKtxActivity<BrowserActivity>(value = BrowserActivity.KEY_URL to article.link)
 

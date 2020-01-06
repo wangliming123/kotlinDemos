@@ -5,10 +5,10 @@ import androidx.paging.PagedList
 import com.wlm.mvvm_wanandroid.base.BaseRepository
 import com.wlm.mvvm_wanandroid.base.HttpResponse
 import com.wlm.mvvm_wanandroid.base.paging.Listing
-import com.wlm.mvvm_wanandroid.bean.Article
-import com.wlm.mvvm_wanandroid.bean.ArticleList
+import com.wlm.mvvm_wanandroid.common.Article
+import com.wlm.mvvm_wanandroid.common.ArticleList
 import com.wlm.mvvm_wanandroid.datasource.knowledge.KnowledgeDataSourceFactory
-import com.wlm.mvvm_wanandroid.net.RetrofitManager
+import com.wlm.mvvm_wanandroid.common.net.RetrofitManager
 import com.wlm.mvvm_wanandroid.viewmodel.KnowledgeViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

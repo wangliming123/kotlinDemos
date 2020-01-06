@@ -3,7 +3,7 @@ package com.wlm.mvvm_wanandroid.datasource.navigation
 import androidx.lifecycle.viewModelScope
 import androidx.paging.ItemKeyedDataSource
 import com.wlm.mvvm_wanandroid.base.UiState
-import com.wlm.mvvm_wanandroid.bean.Navigation
+import com.wlm.mvvm_wanandroid.common.Navigation
 import com.wlm.mvvm_wanandroid.executeResponse
 import com.wlm.mvvm_wanandroid.viewmodel.NavigationViewModel
 import kotlinx.coroutines.launch

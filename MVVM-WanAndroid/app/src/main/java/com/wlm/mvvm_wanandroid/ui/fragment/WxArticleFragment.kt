@@ -9,7 +9,7 @@ import com.google.android.material.tabs.TabLayout
 import com.orhanobut.logger.Logger
 import com.wlm.mvvm_wanandroid.R
 import com.wlm.mvvm_wanandroid.base.ui.BaseVMFragment
-import com.wlm.mvvm_wanandroid.bean.Knowledge
+import com.wlm.mvvm_wanandroid.common.Knowledge
 import com.wlm.mvvm_wanandroid.viewmodel.WxArticleViewModel
 import kotlinx.android.synthetic.main.fragment_wx_article.*
 

@@ -1,16 +1,15 @@
 package com.wlm.mvvm_wanandroid.repository
 
-import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.wlm.mvvm_wanandroid.base.BaseRepository
 import com.wlm.mvvm_wanandroid.base.HttpResponse
 import com.wlm.mvvm_wanandroid.base.paging.Listing
-import com.wlm.mvvm_wanandroid.bean.Article
-import com.wlm.mvvm_wanandroid.bean.ArticleList
-import com.wlm.mvvm_wanandroid.bean.HotKey
+import com.wlm.mvvm_wanandroid.common.Article
+import com.wlm.mvvm_wanandroid.common.ArticleList
+import com.wlm.mvvm_wanandroid.common.HotKey
 import com.wlm.mvvm_wanandroid.datasource.search.SearchDataSourceFactory
-import com.wlm.mvvm_wanandroid.net.RetrofitManager
+import com.wlm.mvvm_wanandroid.common.net.RetrofitManager
 import com.wlm.mvvm_wanandroid.viewmodel.SearchViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

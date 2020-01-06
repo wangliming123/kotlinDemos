@@ -3,7 +3,7 @@ package com.wlm.mvvm_wanandroid.datasource.home
 import androidx.lifecycle.viewModelScope
 import androidx.paging.ItemKeyedDataSource
 import com.wlm.mvvm_wanandroid.base.UiState
-import com.wlm.mvvm_wanandroid.bean.Article
+import com.wlm.mvvm_wanandroid.common.Article
 import com.wlm.mvvm_wanandroid.executeResponse
 import com.wlm.mvvm_wanandroid.viewmodel.HomeViewModel
 import kotlinx.coroutines.*

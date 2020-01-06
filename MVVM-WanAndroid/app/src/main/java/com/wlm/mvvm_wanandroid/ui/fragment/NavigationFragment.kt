@@ -38,7 +38,7 @@ class NavigationFragment : BaseVMFragment<NavigationViewModel>() {
 
         initRecycler()
 
-        layout_refresh.setColorSchemeColors(Color.BLUE, Color.GREEN)
+        layout_refresh.setColorSchemeColors(Color.GREEN, Color.BLUE)
         layout_refresh.setOnRefreshListener {
             isRefreshFromPull = true
             mViewModel.refresh()
