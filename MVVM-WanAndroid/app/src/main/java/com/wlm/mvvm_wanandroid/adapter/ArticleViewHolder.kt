@@ -28,10 +28,14 @@ class ArticleViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
     private val ivPic = itemView.findViewById<ImageView>(R.id.iv_pic)
     private val ivCollect = itemView.findViewById<ImageView>(R.id.iv_collect)
 
-    fun bind(article: Article?) {
+    fun bind(article: Article?, articleType: Int = DefaultArticleAdapter.TYPE_AUTHOR) {
         this.article = article
         article?.run {
-            tvAuthor.text = author
+            if (articleType == DefaultArticleAdapter.TYPE_SHARE) {
+                tvAuthor.text = shareUser
+            } else {
+                tvAuthor.text = author
+            }
             tvTop.visibility = if (isTop) View.VISIBLE else View.GONE
             tvDate.text = niceDate
             tvTitle.text = HtmlCompat.fromHtml(title, HtmlCompat.FROM_HTML_MODE_LEGACY)

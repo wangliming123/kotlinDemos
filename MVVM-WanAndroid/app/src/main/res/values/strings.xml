@@ -4,6 +4,7 @@
     <string name="str_home">首页</string>
     <string name="str_wx_article">公众号</string>
     <string name="str_project">项目</string>
+    <string name="str_square">广场</string>
     <string name="str_navigation">导航</string>
     <string name="str_knowledge_tree">体系</string>
 
@@ -33,5 +34,12 @@
     <string name="str_username_invalid">用户名最少3位</string>
     <string name="str_password_invalid">密码最少6位</string>
     <string name="str_collect">收藏</string>
+    <string name="str_article_link">文章链接</string>
+    <string name="str_article_title">文章标题（100字以内）</string>
+    <string name="str_share">分享</string>
+    <string name="str_cancel">取消</string>
+    <string name="str_tip_title_not_empty">文章标题不能为空</string>
+    <string name="str_tip_link_not_empty">链接不能为空</string>
+    <string name="str_tip_link_not_valid">链接必须以http://或者 https://开头</string>
 
 </resources>

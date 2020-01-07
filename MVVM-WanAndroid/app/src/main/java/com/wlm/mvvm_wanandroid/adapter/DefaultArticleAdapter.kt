@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import com.wlm.mvvm_wanandroid.R
 import com.wlm.mvvm_wanandroid.common.Article
 
-class DefaultArticleAdapter : PagedListAdapter<Article, ArticleViewHolder>(diffCallback){
+class DefaultArticleAdapter(private val articleType: Int = TYPE_AUTHOR) : PagedListAdapter<Article, ArticleViewHolder>(diffCallback){
     companion object {
+        const val TYPE_AUTHOR = 0
+        const val TYPE_SHARE = 1
 
         private val diffCallback = object : DiffUtil.ItemCallback<Article>() {
             override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean =
@@ -30,7 +32,7 @@ class DefaultArticleAdapter : PagedListAdapter<Article, ArticleViewHolder>(diffC
         ArticleViewHolder(parent)
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), articleType)
         holder.itemView.findViewById<ImageView>(R.id.iv_collect).setOnClickListener {
             getItem(position)?.run {
                 listener?.onClick(it, this)

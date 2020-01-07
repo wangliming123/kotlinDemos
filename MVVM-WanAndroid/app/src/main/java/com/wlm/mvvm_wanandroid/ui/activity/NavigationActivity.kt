@@ -1,4 +1,4 @@
-package com.wlm.mvvm_wanandroid.ui.fragment
+package com.wlm.mvvm_wanandroid.ui.activity
 
 import android.graphics.Color
 import androidx.lifecycle.Observer
@@ -9,15 +9,16 @@ import com.orhanobut.logger.Logger
 import com.wlm.mvvm_wanandroid.R
 import com.wlm.mvvm_wanandroid.adapter.NavigationAdapter
 import com.wlm.mvvm_wanandroid.adapter.NavigationArticleAdapter
-import com.wlm.mvvm_wanandroid.base.ui.BaseVMFragment
+import com.wlm.mvvm_wanandroid.base.ui.BaseVMActivity
 import com.wlm.mvvm_wanandroid.viewmodel.NavigationViewModel
-import kotlinx.android.synthetic.main.fragment_navigation.*
+import kotlinx.android.synthetic.main.activity_navigation.*
+import kotlinx.android.synthetic.main.layout_toolbar.*
 
-class NavigationFragment : BaseVMFragment<NavigationViewModel>() {
-    override val layoutId = R.layout.fragment_navigation
+class NavigationActivity : BaseVMActivity<NavigationViewModel>() {
+
+    override val layoutId: Int = R.layout.activity_navigation
 
     override val providerVMClass: Class<NavigationViewModel> = NavigationViewModel::class.java
-
     private var checkedPosition: Int = 0
     private val adapterNavigation by lazy {
         NavigationAdapter(object : NavigationAdapter.OnItemClickListener {
@@ -36,6 +37,11 @@ class NavigationFragment : BaseVMFragment<NavigationViewModel>() {
     override fun init() {
         super.init()
 
+        toolbar.title = getString(R.string.str_navigation)
+        setSupportActionBar(toolbar)
+        toolbar.navigationIcon = getDrawable(R.drawable.arrow_back)
+        toolbar.setNavigationOnClickListener { finish() }
+
         initRecycler()
 
         layout_refresh.setColorSchemeColors(Color.GREEN, Color.BLUE)
@@ -44,7 +50,6 @@ class NavigationFragment : BaseVMFragment<NavigationViewModel>() {
             mViewModel.refresh()
             adapterNavigation.setChecked(0)
         }
-
     }
 
     private fun initRecycler() {
@@ -68,12 +73,12 @@ class NavigationFragment : BaseVMFragment<NavigationViewModel>() {
     override fun startObserve() {
         super.startObserve()
         mViewModel.run {
-            pagedList.observe(this@NavigationFragment, Observer {
+            pagedList.observe(this@NavigationActivity, Observer {
                 adapterNavigation.submitList(it)
                 adapterNavigationArticle.submitList(it)
             })
 
-            uiState.observe(this@NavigationFragment, Observer { state ->
+            uiState.observe(this@NavigationActivity, Observer { state ->
                 layout_refresh.isRefreshing = state.loading
 
                 if (state.loading) {

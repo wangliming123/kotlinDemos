@@ -69,19 +69,23 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("user/login")
-    suspend fun login(@Field("username") username: String,
-              @Field("password") password: String): HttpResponse<User>
+    suspend fun login(
+        @Field("username") username: String,
+        @Field("password") password: String
+    ): HttpResponse<User>
 
 
     @FormUrlEncoded
     @POST("user/register")
-    suspend fun register(@Field("username") username: String,
-                 @Field("password") password: String,
-                 @Field("repassword") rePassword: String): HttpResponse<User>
+    suspend fun register(
+        @Field("username") username: String,
+        @Field("password") password: String,
+        @Field("repassword") rePassword: String
+    ): HttpResponse<User>
 
 
     @GET("user/logout/json")
-    suspend fun logout() : HttpResponse<Any>
+    suspend fun logout(): HttpResponse<Any>
 
     @POST("lg/collect/{id}/json")
     suspend fun collect(@Path("id") id: Int): HttpResponse<Any>
@@ -92,6 +96,16 @@ interface ApiService {
 
     @GET("lg/collect/list/{page}/json")
     suspend fun getCollectArticles(@Path("page") page: Int): HttpResponse<ArticleList>
+
+    @GET("/user_article/list/{page}/json")
+    suspend fun getSquareArticle(@Path("page") page: Int): HttpResponse<ArticleList>
+
+    @FormUrlEncoded
+    @POST("lg/user_article/add/json")
+    suspend fun shareArticle(
+        @Field("title") title: String,
+        @Field("link") link: String
+    ): HttpResponse<Any>
 
 //    @POST("lg/uncollect/{id}/json")
 //    suspend fun unCollectById(@Path("id") id: Int): HttpResponse<Any>

@@ -29,25 +29,28 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
 
     private val bottomTitles = arrayOf(
         R.string.str_home,
+        R.string.str_square,
         R.string.str_knowledge_tree,
-        R.string.str_navigation,
         R.string.str_project,
         R.string.str_wx_article
+//        R.string.str_navigation
     )
 
-    private val homeFragment by lazy { HomeFragment() }
-    private val knowledgeTreeFragment by lazy { KnowledgeTreeFragment() }
-    private val navigationItemView by lazy { NavigationFragment() }
-    private val projectFragment by lazy { ProjectFragment() }
     private val fragmentList = arrayListOf<Fragment>()
+    private val homeFragment by lazy { HomeFragment() }
+    private val squareFragment by lazy { SquareFragment() }
+    private val knowledgeTreeFragment by lazy { KnowledgeTreeFragment() }
+    private val projectFragment by lazy { ProjectFragment() }
     private val wxArticleFragment by lazy { WxArticleFragment() }
+//    private val navigationItemView by lazy { NavigationFragment() }
 
     init {
         fragmentList.add(homeFragment)
+        fragmentList.add(squareFragment)
         fragmentList.add(knowledgeTreeFragment)
-        fragmentList.add(navigationItemView)
         fragmentList.add(projectFragment)
         fragmentList.add(wxArticleFragment)
+//        fragmentList.add(navigationItemView)
     }
 
     override fun init() {
@@ -151,10 +154,11 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
             setOnNavigationItemSelectedListener {
                 when (it.itemId) {
                     R.id.home -> view_pager.currentItem = 0
-                    R.id.knowledge_tree -> view_pager.currentItem = 1
-                    R.id.navigation -> view_pager.currentItem = 2
+                    R.id.square -> view_pager.currentItem = 1
+                    R.id.knowledge_tree -> view_pager.currentItem = 2
                     R.id.project -> view_pager.currentItem = 3
-                    R.id.wx_article -> view_pager.currentItem = 5
+                    R.id.wx_article -> view_pager.currentItem = 4
+//                    R.id.navigation -> view_pager.currentItem = 5
                 }
                 true
             }
@@ -168,8 +172,9 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-//            R.id.scan -> {
-//            }
+            R.id.navigation -> {
+                startKtxActivity<NavigationActivity>()
+            }
             R.id.search -> {
                 startKtxActivity<SearchActivity>()
                 return true
