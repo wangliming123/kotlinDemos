@@ -5,7 +5,7 @@
         android:title="@string/str_favorites"/>
     <item
         android:id="@+id/todo"
-        android:title="@string/str_todo"/>
+        android:title="@string/str_todo_list"/>
 <!--    <item-->
 <!--        android:id="@+id/night_mode"-->
 <!--        android:title="@string/str_night_mode"/>-->

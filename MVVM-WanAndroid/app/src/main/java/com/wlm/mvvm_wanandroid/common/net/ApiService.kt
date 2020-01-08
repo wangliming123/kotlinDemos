@@ -107,6 +107,41 @@ interface ApiService {
         @Field("link") link: String
     ): HttpResponse<Any>
 
+
+    @GET("lg/todo/v2/list/{page}/json")
+    suspend fun getTodoList(
+        @Path("page") page: Int,
+        @Query("status") status: Int
+    ): HttpResponse<TodoList>
+
+    @FormUrlEncoded
+    @POST("lg/todo/done/{id}/json")
+    suspend fun finishTodo(
+        @Path("id") id: Int,
+        @Field("status") status: Int
+    ): HttpResponse<Any>
+
+    @POST("lg/todo/delete/{id}/json")
+    suspend fun deleteTodo(@Path("id") id: Int): HttpResponse<Any>
+
+    @FormUrlEncoded
+    @POST("lg/todo/add/json")
+    suspend fun addTodo(
+        @Field("title") title: String,
+        @Field("content") content: String,
+        @Field("date") date: String
+    ): HttpResponse<Any>
+
+    @FormUrlEncoded
+    @POST("lg/todo/update/{id}/json")
+    suspend fun updateTodo(
+        @Path("id") id: Int,
+        @Field("title") title: String,
+        @Field("content") content: String,
+        @Field("date") date: String,
+        @Field("status") status: Int
+    ): HttpResponse<Any>
+
 //    @POST("lg/uncollect/{id}/json")
 //    suspend fun unCollectById(@Path("id") id: Int): HttpResponse<Any>
 

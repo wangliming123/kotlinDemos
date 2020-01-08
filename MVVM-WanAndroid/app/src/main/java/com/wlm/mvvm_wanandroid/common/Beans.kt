@@ -99,3 +99,27 @@ data class User(
     val username: String
 )
 
+
+data class TodoList(
+    val curPage: Int,
+    val datas: List<Todo>,
+    val offset: Int,
+    val over: Boolean,
+    val pageCount: Int,
+    val size: Int,
+    val total: Int
+)
+
+data class Todo(
+    val completeDate: Long,
+    val completeDateStr: String,
+    val content: String,
+    val date: Long,
+    val dateStr: String,
+    val id: Int,
+    val priority: Int,
+    val status: Int,
+    val title: String,
+    val type: Int,
+    val userId: Int
+)

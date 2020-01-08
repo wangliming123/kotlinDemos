@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
@@ -92,7 +93,11 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
                     }
                 }
                 R.id.todo -> {
-                    ToastUtils.show(it.title.toString())
+                    if (isLogin) {
+                        startKtxActivity<TodoActivity>()
+                    } else {
+                        startKtxActivity<LoginActivity>()
+                    }
                 }
 //                R.id.night_mode -> {
 //                }
@@ -102,7 +107,16 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
                     mViewModel.logout()
                 }
                 R.id.about -> {
-                    ToastUtils.show(it.title.toString())
+                    AlertDialog.Builder(this).setTitle(R.string.app_name)
+                        .setMessage(
+                            getString(
+                                R.string.str_source_code,
+                                "https://github.com/wangliming123/MVVM-WanAndroid"
+                            )
+                        )
+                        .setPositiveButton(R.string.str_confirm, null)
+                        .create()
+                        .show()
                 }
             }
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -140,7 +154,8 @@ class MainActivity : BaseVMActivity<MainViewModel>() {
                 override fun onPageSelected(position: Int) {
                     bottom_navigation.selectedItemId =
                         bottom_navigation.menu.getItem(position).itemId
-                    toolbar.title = getString(if (position == 0) R.string.app_name else bottomTitles[position] )
+                    toolbar.title =
+                        getString(if (position == 0) R.string.app_name else bottomTitles[position])
                 }
 
             })

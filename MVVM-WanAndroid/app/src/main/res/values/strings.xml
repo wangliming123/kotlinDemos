@@ -9,7 +9,7 @@
     <string name="str_knowledge_tree">体系</string>
 
     <string name="str_favorites">收藏</string>
-    <string name="str_todo">待办清单</string>
+    <string name="str_todo_list">待办清单</string>
     <string name="str_night_mode">夜间模式</string>
     <string name="str_setting">设置</string>
     <string name="str_logout">退出登录</string>
@@ -41,5 +41,18 @@
     <string name="str_tip_title_not_empty">文章标题不能为空</string>
     <string name="str_tip_link_not_empty">链接不能为空</string>
     <string name="str_tip_link_not_valid">链接必须以http://或者 https://开头</string>
+    <string name="str_finished">已完成</string>
+    <string name="str_todo">待办</string>
+    <string formatted="true" name="str_complete_time">完成: %s</string>
+    <string formatted="true" name="str_date_time">预完成: %s</string>
+    <string name="str_title">标题（必填）</string>
+    <string name="str_content">详情</string>
+
+    <string name="str_tip_todo_title_not_empty">标题不能为空</string>
+    <string name="str_tip_date_not_empty">日期不能为空</string>
+    <string formatted="true" name="str_tip_date_not_valid">日期必需为以下格式: %s</string>
+    <string name="str_save">保存</string>
+    <string formatted="true" name="str_source_code">源码地址:\n%s</string>
+    <string name="str_confirm">确定</string>
 
 </resources>
